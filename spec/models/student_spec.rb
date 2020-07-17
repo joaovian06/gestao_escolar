@@ -8,8 +8,8 @@ RSpec.describe Student, type: :model do
       end
     end
     describe 'address' do
-      it 'address need to be larger than 15 caracters' do
-        expect(student.address.length).to be > 15
+      it 'address is mandatory' do
+        is_expected.to validate_presence_of(:address)
       end
     end
   end
