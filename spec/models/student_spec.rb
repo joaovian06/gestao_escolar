@@ -26,6 +26,10 @@ RSpec.describe Student, type: :model do
       it 'email is mandatory' do
         is_expected.to validate_presence_of(:email)
       end
+
+      it 'email need to be valid' do
+        is_expected.not_to allow_value('invalid_email.com').for(:email)
+      end
     end
   end
 end
