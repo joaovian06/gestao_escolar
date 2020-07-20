@@ -13,14 +13,19 @@ RSpec.describe Student, type: :model do
       it 'has 10 caracters at minimum' do
         expect(student.name.length).to be >= 10
       end
-
     end
     describe 'address' do
 
       it 'address is mandatory' do
         is_expected.to validate_presence_of(:address)
       end
+    end
 
+    describe 'email' do
+
+      it 'email is mandatory' do
+        is_expected.to validate_presence_of(:email)
+      end
     end
   end
 end
