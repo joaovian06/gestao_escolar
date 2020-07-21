@@ -4,4 +4,11 @@ class Student < ApplicationRecord
   validates :address, presence: true
   validates :email, presence: true
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validate :validate_today_birthday
+
+  private
+
+  def validate_today_birthday
+    return false if  birthday == Date.today
+  end
 end

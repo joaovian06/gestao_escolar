@@ -14,6 +14,7 @@ RSpec.describe Student, type: :model do
         expect(student.name.length).to be >= 10
       end
     end
+
     describe 'address' do
 
       it 'address is mandatory' do
@@ -29,6 +30,17 @@ RSpec.describe Student, type: :model do
 
       it 'email need to be valid' do
         is_expected.not_to allow_value('invalid_email.com').for(:email)
+      end
+    end
+
+    describe 'birthday' do
+
+      context 'date not valid' do
+        let(:student) { FactoryBot.create(:student, birthday: Date.today) }
+
+        it 'cant be todays date' do
+          expect(student).not_to be_valid
+        end
       end
     end
   end
