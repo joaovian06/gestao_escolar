@@ -36,7 +36,7 @@ RSpec.describe Student, type: :model do
     describe 'birthday' do
 
       context 'date not valid' do
-        let(:student) { FactoryBot.create(:student, birthday: Date.today) }
+        let(:student) { FactoryBot.build(:student, birthday: Date.today) }
 
         it 'cant be todays date' do
           expect(student).not_to be_valid

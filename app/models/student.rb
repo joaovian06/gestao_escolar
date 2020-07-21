@@ -9,6 +9,6 @@ class Student < ApplicationRecord
   private
 
   def validate_today_birthday
-    return false if  birthday == Date.today
+    errors.add(:birthday, 'birthday cant be today') if birthday == Date.today
   end
 end
