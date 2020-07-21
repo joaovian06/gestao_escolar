@@ -42,6 +42,14 @@ RSpec.describe Student, type: :model do
           expect(student).not_to be_valid
         end
       end
+
+      context 'date valid' do
+        let(:student) { FactoryBot.build(:student, birthday: Date.today) }
+
+        it 'birthday is mandatory' do
+          is_expected.to validate_presence_of(:birthday)
+        end
+      end
     end
   end
 end
