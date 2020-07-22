@@ -3,8 +3,8 @@ FactoryBot.define do
     name { Faker::Name.name }
     address { Faker::Address.street_address }
     email { Faker::Internet.email }
-    birthday { Faker::Date.in_date_period }
-    gender { 1 }
+    birthday { Faker::Date.birthday(min_age: 6, max_age: 18) }
+    gender { Student.genders.keys.sample }
     disability { false }
   end
 end
