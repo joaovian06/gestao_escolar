@@ -1,14 +1,22 @@
+# frozen_string_literal: true
+
+# classe model estudante
 class Student < ApplicationRecord
-  enum gender: [:male, :female]
-  validates :name, presence: true,
-                    length: { minimum: 10 }
-  validates :address, presence: true
-  validates :email, presence: true
+  enum gender: %i[male female]
+
+  validates :name,
+            :address,
+            :email,
+            :birthday,
+            :gender,
+            :disability,
+            presence: true
+
+  validates :name, length: { minimum: 10 }
+
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  validates :birthday, presence: true
+
   validate :validate_today_birthday
-  validates :gender, presence: true
-  validates :disability, presence: true
 
   private
 
