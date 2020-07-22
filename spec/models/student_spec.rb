@@ -5,7 +5,6 @@ RSpec.describe Student, type: :model do
 
   describe 'validates' do
     describe 'name' do
-
       it 'name is mandatory' do
         is_expected.to validate_presence_of(:name)
       end
@@ -16,14 +15,12 @@ RSpec.describe Student, type: :model do
     end
 
     describe 'address' do
-
       it 'address is mandatory' do
         is_expected.to validate_presence_of(:address)
       end
     end
 
     describe 'email' do
-
       it 'email is mandatory' do
         is_expected.to validate_presence_of(:email)
       end
@@ -34,7 +31,6 @@ RSpec.describe Student, type: :model do
     end
 
     describe 'birthday' do
-
       context 'date not valid' do
         let(:student) { FactoryBot.build(:student, birthday: Date.today) }
 
@@ -53,6 +49,10 @@ RSpec.describe Student, type: :model do
     end
 
     describe 'gender' do
+      it 'gender is mandatory' do
+        is_expected.to validate_presence_of(:gender)
+      end
+
       describe 'enum' do
         it 'student should belong to one of this genders' do
           is_expected.to define_enum_for(:gender).with_values([:male, :female])
