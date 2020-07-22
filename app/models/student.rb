@@ -1,4 +1,5 @@
 class Student < ApplicationRecord
+  enum gender: [:male, :female]
   validates :name, presence: true,
                     length: { minimum: 10 }
   validates :address, presence: true
