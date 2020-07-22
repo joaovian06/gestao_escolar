@@ -59,5 +59,11 @@ RSpec.describe Student, type: :model do
         end
       end
     end
+
+    describe 'disability' do
+      it 'disability is mandatory' do
+        is_expected.to validate_presence_of(:disability)
+      end
+    end
   end
 end
