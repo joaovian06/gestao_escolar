@@ -51,5 +51,13 @@ RSpec.describe Student, type: :model do
         end
       end
     end
+
+    describe 'gender' do
+      describe 'enum' do
+        it 'student should belong to one of this genders' do
+          is_expected.to define_enum_for(:gender).with_values([:male, :female])
+        end
+      end
+    end
   end
 end
