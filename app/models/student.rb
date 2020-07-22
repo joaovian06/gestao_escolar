@@ -8,6 +8,7 @@ class Student < ApplicationRecord
   validates :birthday, presence: true
   validate :validate_today_birthday
   validates :gender, presence: true
+  validates :disability, presence: true
 
   private
 
