@@ -1,69 +1,45 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
-  let(:student) { FactoryBot.build(:student) }
+  subject(:student) { FactoryBot.build(:student) }
 
   describe 'validates' do
     describe 'name' do
-      it 'name is mandatory' do
-        is_expected.to validate_presence_of(:name)
-      end
-
-      it 'has 10 caracters at minimum' do
-        expect(student.name.length).not_to be < 10
-      end
+      it { is_expected.to validate_presence_of(:name) }
+      it { expect(student.name.length).not_to be < 10 }
     end
 
     describe 'address' do
-      it 'address is mandatory' do
-        is_expected.to validate_presence_of(:address)
-      end
+      it { is_expected.to validate_presence_of(:address) }
     end
 
     describe 'email' do
-      it 'email is mandatory' do
-        is_expected.to validate_presence_of(:email)
-      end
-
-      it 'email need to be valid' do
-        is_expected.not_to allow_value('invalid_email.com').for(:email)
-      end
+      it { is_expected.to validate_presence_of(:email) }
+      it { is_expected.not_to allow_value('invalid_email.com').for(:email) }
     end
 
     describe 'birthday' do
       context 'date not valid' do
         let(:student) { FactoryBot.build(:student, birthday: Date.today) }
 
-        it 'cant be todays date' do
-          expect(student).not_to be_valid
-        end
+        it { expect(student).not_to be_valid }
       end
 
       context 'date valid' do
-        let(:student) { FactoryBot.build(:student, birthday: Date.today) }
-
-        it 'birthday is mandatory' do
-          is_expected.to validate_presence_of(:birthday)
-        end
+        it { is_expected.to validate_presence_of(:birthday) }
       end
     end
 
     describe 'gender' do
-      it 'gender is mandatory' do
-        is_expected.to validate_presence_of(:gender)
-      end
+      it { is_expected.to validate_presence_of(:gender) }
 
       describe 'enum' do
-        it 'student should belong to one of this genders' do
-          is_expected.to define_enum_for(:gender).with_values([:male, :female])
-        end
+        it { is_expected.to define_enum_for(:gender).with_values(%i[male female]) }
       end
     end
 
     describe 'disability' do
-      it 'disability is mandatory' do
-        is_expected.to validate_presence_of(:disability)
-      end
+      it { is_expected.to validate_presence_of(:disability) }
     end
   end
 end
