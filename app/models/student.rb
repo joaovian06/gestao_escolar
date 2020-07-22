@@ -9,7 +9,6 @@ class Student < ApplicationRecord
             :email,
             :birthday,
             :gender,
-            :disability,
             presence: true
 
   validates :name, length: { minimum: 10 }

@@ -37,9 +37,5 @@ RSpec.describe Student, type: :model do
         it { is_expected.to define_enum_for(:gender).with_values(%i[male female]) }
       end
     end
-
-    describe 'disability' do
-      it { is_expected.to validate_presence_of(:disability) }
-    end
   end
 end
