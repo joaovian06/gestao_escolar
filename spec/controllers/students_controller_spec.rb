@@ -63,5 +63,13 @@ RSpec.describe StudentsController, type: :controller do
         expect(assigns[:student]).to eq(student)
       end
     end
+
+    context 'given an invalid student id' do
+      before { get :show, params: { id: 0 } }
+
+      it 'redirects to #index' do
+        expect(response).to redirect_to(students_path)
+      end
+    end
   end
 end
