@@ -9,4 +9,12 @@ RSpec.describe StudentsController, type: :controller do
       expect(assigns[:students]).to match_array(students)
     end
   end
+
+  describe '#new' do
+    before { get :new }
+
+    it 'renders #new page' do
+      is_expected.to render_template :new
+    end
+  end
 end
