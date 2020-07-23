@@ -44,4 +44,18 @@ RSpec.describe StudentsController, type: :controller do
       end
     end
   end
+
+  describe '#show' do
+    let(:student) { FactoryBot.create(:student) }
+
+    context 'given an valid student id' do
+      before do
+        get :show, params: { id: student.id }
+      end
+
+      it 'renders #show' do
+        expect(response).to render_template(:show)
+      end
+    end
+  end
 end
