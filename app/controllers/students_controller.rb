@@ -13,6 +13,6 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.last
+    @student = Student.find_by(id: params[:id])
   end
 end
