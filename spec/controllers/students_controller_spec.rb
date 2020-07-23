@@ -50,6 +50,8 @@ RSpec.describe StudentsController, type: :controller do
 
     context 'given an valid student id' do
       before do
+        student
+        FactoryBot.create(:student)
         get :show, params: { id: student.id }
       end
 
