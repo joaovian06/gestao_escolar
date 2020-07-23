@@ -56,6 +56,10 @@ RSpec.describe StudentsController, type: :controller do
       it 'renders #show' do
         expect(response).to render_template(:show)
       end
+
+      it do
+        expect(assigns[:student]).to eq(student)
+      end
     end
   end
 end
