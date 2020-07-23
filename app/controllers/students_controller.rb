@@ -8,5 +8,10 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    @student = Student.find_by(id: params[:id])
+    redirect_to students_path unless @student.present?
+  end
+
+  def show
   end
 end

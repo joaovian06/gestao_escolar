@@ -14,7 +14,34 @@ RSpec.describe StudentsController, type: :controller do
     before { get :new }
 
     it 'renders #new page' do
-      is_expected.to render_template :new
+      expect(response).to render_template(:new)
+    end
+  end
+
+  describe '#edit' do
+    context 'given a valid id' do
+      let(:student) { FactoryBot.create(:student) }
+
+      before do
+        student
+        FactoryBot.create(:student)
+        get :edit, params: { id: student.id }
+      end
+
+      it 'renders #edit' do
+        expect(response).to render_template(:edit)
+      end
+
+      it do
+        expect(assigns[:student]).to eq(student)
+      end
+    end
+    context 'given an invalid student id' do
+      before { get :edit, params: { id: 0 } }
+
+      it 'redirect to #index' do
+        expect(response).to redirect_to(students_path)
+      end
     end
   end
 end
