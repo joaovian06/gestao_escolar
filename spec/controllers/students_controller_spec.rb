@@ -72,4 +72,16 @@ RSpec.describe StudentsController, type: :controller do
       end
     end
   end
+
+  describe '#create' do
+    context 'valid params' do
+      before do
+        post :create
+      end
+
+      it 'permit params' do
+        is_expected.to permit(:name, :address, :email, :birthday, :gender, :disability).for(:create, params: { name: 'Joao Vitor Vian', address: 'rua brotas', email: 'joao.vian@caiena.net', birthday: 'Mon, 05 Sep 2005', gender: 1, disability: false }).on(:student)
+      end
+    end
+  end
 end
