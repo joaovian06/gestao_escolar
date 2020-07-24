@@ -7,4 +7,8 @@ FactoryBot.define do
     gender { Student.genders.keys.sample }
     disability { false }
   end
+
+  trait :invalid do
+    address { '' }
+  end
 end
