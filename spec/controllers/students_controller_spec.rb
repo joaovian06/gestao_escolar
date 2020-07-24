@@ -46,7 +46,7 @@ RSpec.describe StudentsController, type: :controller do
   end
 
   describe '#show' do
-    let(:student) { FactoryBot.create(:student) }
+    let(:student) { create(:student) }
 
     context 'given an valid student id' do
       before do
@@ -74,13 +74,14 @@ RSpec.describe StudentsController, type: :controller do
   end
 
   describe '#create' do
-    context 'valid params' do
-      before do
-        post :create
-      end
+    describe 'params' do
+      context 'valid params' do
+        let(:student) { build(:student) }
+        before { post :create, params:  student.attributes }
 
-      it 'permit params' do
-        is_expected.to permit(:name, :address, :email, :birthday, :gender, :disability).for(:create, params: { name: 'Joao Vitor Vian', address: 'rua brotas', email: 'joao.vian@caiena.net', birthday: 'Mon, 05 Sep 2005', gender: 1, disability: false }).on(:student)
+        it 'redirect to index' do
+          expect(response).to redirect_to(:index)
+        end
       end
     end
   end
