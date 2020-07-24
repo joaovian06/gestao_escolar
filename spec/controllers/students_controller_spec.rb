@@ -80,7 +80,7 @@ RSpec.describe StudentsController, type: :controller do
         before { post :create, params:  student.attributes }
 
         it 'redirect to index' do
-          expect(response).to redirect_to(:index)
+          expect(response).to redirect_to(students_path)
         end
       end
     end

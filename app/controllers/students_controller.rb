@@ -16,4 +16,8 @@ class StudentsController < ApplicationController
     @student = Student.find_by(id: params[:id])
     redirect_to students_path unless @student.present?
   end
+
+  def create
+    redirect_to students_path
+  end
 end
