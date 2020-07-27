@@ -36,6 +36,9 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    @student = Student.find_by(id: params[:id])
+    @student.destroy if @student.present?
+
     redirect_to students_path
   end
 

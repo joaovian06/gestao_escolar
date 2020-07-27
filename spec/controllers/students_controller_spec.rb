@@ -131,6 +131,7 @@ RSpec.describe StudentsController, type: :controller do
         expect(response).to redirect_to(students_path)
       end
     end
+
     context 'invalid params' do
       let(:student) { create(:student, name: default_student_name) }
       before { patch :update, params: { id: student.id, student: { name: updated_name, address: '' } } }
@@ -142,8 +143,15 @@ RSpec.describe StudentsController, type: :controller do
   end
 
   describe '#destroy' do
+    let!(:student) { create(:student) }
+
+    context 'valid id' do
+      it 'delete student' do
+        expect { delete :destroy, params: { id: student.id } }.to change(Student, :count).by(-1)
+      end
+    end
+
     context 'invalid id' do
-      let(:student) { create(:student) }
       before { delete :destroy, params: { id: 0 } }
 
       it 'redirect to #index' do
