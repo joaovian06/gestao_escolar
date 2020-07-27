@@ -107,4 +107,15 @@ RSpec.describe StudentsController, type: :controller do
       end
     end
   end
+
+  describe '#update' do
+    context 'invalid params' do
+      let(:student) { create(:student) }
+      before { patch :update, params: { id: student.id, student: { name: '' } } }
+
+      it 'render #edit' do
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
 end
