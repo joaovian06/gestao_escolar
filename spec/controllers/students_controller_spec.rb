@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe StudentsController, type: :controller do
+  let(:student) { build(:student) }
+  let(:permitted_params) { %i[name address email birthday gender disability] }
+  let(:valid_params) { { student: student.attributes } }
+
   describe '#index' do
     let!(:students) { FactoryBot.create_list(:student, 10) }
     before { get :index }
@@ -74,44 +78,62 @@ RSpec.describe StudentsController, type: :controller do
   end
 
   describe '#create' do
-    describe 'params' do
-      context 'valid params' do
-        let(:student) { build(:student) }
-        let(:valid_params) { { student: student.attributes } }
+    context 'valid params' do
+      let(:student) { build(:student) }
 
-        it 'permit params' do
-          is_expected.to permit(:name, :address, :email, :birthday, :gender, :disability).for(:create, params: valid_params).on(:student)
-        end
-
-        it 'saves the student' do
-          expect { post :create, params: valid_params }.to change(Student, :count).by(1)
-        end
-
-        context 'redirects' do
-          before { post :create, params: valid_params }
-
-          it 'redirect to #index' do
-            expect(response).to redirect_to(students_path)
-          end
-        end
+      it 'permit params' do
+        is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:student)
       end
 
-      context 'invalid params' do
-        let(:student) { build(:student, :invalid) }
-        let(:invalid_params) { { student: student.attributes } }
-        before { post :create, params: invalid_params }
+      it 'saves the student' do
+        expect { post :create, params: valid_params }.to change(Student, :count).by(1)
+      end
 
-        it 'renders new' do
-          expect(response).to render_template(:new)
+      context 'redirects' do
+        before { post :create, params: valid_params }
+
+        it 'redirect to #index' do
+          expect(response).to redirect_to(students_path)
         end
+      end
+    end
+
+    context 'invalid params' do
+      let(:student) { build(:student, :invalid) }
+      let(:invalid_params) { { student: student.attributes } }
+      before { post :create, params: invalid_params }
+
+      it 'renders new' do
+        expect(response).to render_template(:new)
       end
     end
   end
 
   describe '#update' do
+    let(:default_student_name) { 'Pedro Alvares Cabral' }
+    let(:updated_name) { 'Joao Vitor Vian' }
+
+    context 'valid params' do
+      let(:student) { create(:student, name: default_student_name) }
+      let(:valid_params) { { id: student.id, student: student.attributes } }
+      before { patch :update, params: { id: student.id, student: { name: updated_name } } }
+
+      it 'permit params' do
+        is_expected.to permit(*permitted_params).for(:update, params: valid_params).on(:student)
+      end
+
+      it 'save changes' do
+        student.reload
+        expect(student.name).to eq updated_name
+      end
+
+      it 'redirect to #index' do
+        expect(response).to redirect_to(students_path)
+      end
+    end
     context 'invalid params' do
-      let(:student) { create(:student) }
-      before { patch :update, params: { id: student.id, student: { name: '' } } }
+      let(:student) { create(:student, name: default_student_name) }
+      before { patch :update, params: { id: student.id, student: { name: updated_name, address: '' } } }
 
       it 'render #edit' do
         expect(response).to render_template(:edit)

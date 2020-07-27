@@ -27,7 +27,12 @@ class StudentsController < ApplicationController
   end
 
   def update
-    render :edit
+    @student = Student.find_by(id: params[:id])
+    if @student.update(students_params)
+      redirect_to students_path
+    else
+      render :edit
+    end
   end
 
   private
