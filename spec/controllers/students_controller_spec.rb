@@ -140,4 +140,15 @@ RSpec.describe StudentsController, type: :controller do
       end
     end
   end
+
+  describe '#destroy' do
+    context 'invalid id' do
+      let(:student) { create(:student) }
+      before { delete :destroy, params: { id: 0 } }
+
+      it 'redirect to #index' do
+        expect(response).to redirect_to(students_path)
+      end
+    end
+  end
 end
