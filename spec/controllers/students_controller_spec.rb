@@ -76,15 +76,33 @@ RSpec.describe StudentsController, type: :controller do
   describe '#create' do
     describe 'params' do
       context 'valid params' do
-        let(:student) { create(:student) }
-        before { post :create, params: student.attributes }
+        let(:student) { build(:student) }
+        let(:valid_params) { { student: student.attributes } }
 
-        it 'redirect to index' do
-          expect(response).to redirect_to(students_path)
+        it 'permit params' do
+          is_expected.to permit(:name, :address, :email, :birthday, :gender, :disability).for(:create, params: valid_params).on(:student)
         end
 
         it 'saves the student' do
-          expect { post :create, params: student.attributes }.to change(Student, :count).by(1)
+          expect { post :create, params: valid_params }.to change(Student, :count).by(1)
+        end
+
+        context 'redirects' do
+          before { post :create, params: valid_params }
+
+          it 'redirect to #index' do
+            expect(response).to redirect_to(students_path)
+          end
+        end
+      end
+
+      context 'invalid params' do
+        let(:student) { build(:student, :invalid) }
+        let(:invalid_params) { { student: student.attributes } }
+        before { post :create, params: invalid_params }
+
+        it 'renders new' do
+          expect(response).to render_template(:new)
         end
       end
     end
