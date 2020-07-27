@@ -35,6 +35,10 @@ class StudentsController < ApplicationController
     end
   end
 
+  def destroy
+    redirect_to students_path
+  end
+
   private
 
   def students_params
