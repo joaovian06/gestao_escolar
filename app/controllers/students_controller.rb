@@ -26,6 +26,10 @@ class StudentsController < ApplicationController
     end
   end
 
+  def update
+    render :edit
+  end
+
   private
 
   def students_params
