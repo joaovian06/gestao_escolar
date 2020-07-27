@@ -6,74 +6,57 @@ RSpec.describe StudentsController, type: :controller do
   let(:valid_params) { { student: student.attributes } }
 
   describe '#index' do
-    let!(:students) { FactoryBot.create_list(:student, 10) }
+    let!(:students) { create_list(:student, 10) }
     before { get :index }
 
-    it 'return all students' do
-      expect(assigns[:students]).to match_array(students)
-    end
+    it { expect(assigns[:students]).to match_array(students) }
   end
 
   describe '#new' do
     before { get :new }
 
-    it 'renders #new page' do
-      expect(response).to render_template(:new)
-    end
+    it { expect(response).to render_template(:new) }
   end
 
   describe '#edit' do
-    context 'given a valid id' do
-      let(:student) { FactoryBot.create(:student) }
+    context 'valid id' do
+      let(:student) { create(:student) }
 
       before do
         student
-        FactoryBot.create(:student)
+        create(:student)
         get :edit, params: { id: student.id }
       end
 
-      it 'renders #edit' do
-        expect(response).to render_template(:edit)
-      end
-
-      it do
-        expect(assigns[:student]).to eq(student)
-      end
+      it { expect(response).to render_template(:edit) }
+      it { expect(assigns[:student]).to eq(student) }
     end
-    context 'given an invalid student id' do
+
+    context 'invalid student id' do
       before { get :edit, params: { id: 0 } }
 
-      it 'redirect to #index' do
-        expect(response).to redirect_to(students_path)
-      end
+      it { expect(response).to redirect_to(students_path) }
     end
   end
 
   describe '#show' do
     let(:student) { create(:student) }
 
-    context 'given an valid student id' do
+    context 'valid id' do
       before do
         student
-        FactoryBot.create(:student)
+        create(:student)
         get :show, params: { id: student.id }
       end
 
-      it 'renders #show' do
-        expect(response).to render_template(:show)
-      end
-
-      it do
-        expect(assigns[:student]).to eq(student)
-      end
+      it { expect(response).to render_template(:show) }
+      it { expect(assigns[:student]).to eq(student) }
     end
 
-    context 'given an invalid student id' do
+    context 'invalid id' do
       before { get :show, params: { id: 0 } }
 
-      it 'redirects to #index' do
-        expect(response).to redirect_to(students_path)
-      end
+      it { expect(response).to redirect_to(students_path) }
     end
   end
 
@@ -81,20 +64,13 @@ RSpec.describe StudentsController, type: :controller do
     context 'valid params' do
       let(:student) { build(:student) }
 
-      it 'permit params' do
-        is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:student)
-      end
-
-      it 'saves the student' do
-        expect { post :create, params: valid_params }.to change(Student, :count).by(1)
-      end
+      it { is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:student) }
+      it { expect { post :create, params: valid_params }.to change(Student, :count).by(1) }
 
       context 'redirects' do
         before { post :create, params: valid_params }
 
-        it 'redirect to #index' do
-          expect(response).to redirect_to(students_path)
-        end
+        it { expect(response).to redirect_to(students_path) }
       end
     end
 
@@ -103,9 +79,7 @@ RSpec.describe StudentsController, type: :controller do
       let(:invalid_params) { { student: student.attributes } }
       before { post :create, params: invalid_params }
 
-      it 'renders new' do
-        expect(response).to render_template(:new)
-      end
+      it { expect(response).to render_template(:new) }
     end
   end
 
@@ -118,27 +92,21 @@ RSpec.describe StudentsController, type: :controller do
       let(:valid_params) { { id: student.id, student: student.attributes } }
       before { patch :update, params: { id: student.id, student: { name: updated_name } } }
 
-      it 'permit params' do
-        is_expected.to permit(*permitted_params).for(:update, params: valid_params).on(:student)
-      end
+      it { is_expected.to permit(*permitted_params).for(:update, params: valid_params).on(:student) }
 
-      it 'save changes' do
+      it do
         student.reload
         expect(student.name).to eq updated_name
       end
 
-      it 'redirect to #index' do
-        expect(response).to redirect_to(students_path)
-      end
+      it { expect(response).to redirect_to(students_path) }
     end
 
     context 'invalid params' do
       let(:student) { create(:student, name: default_student_name) }
       before { patch :update, params: { id: student.id, student: { name: updated_name, address: '' } } }
 
-      it 'render #edit' do
-        expect(response).to render_template(:edit)
-      end
+      it { expect(response).to render_template(:edit) }
     end
   end
 
@@ -146,17 +114,13 @@ RSpec.describe StudentsController, type: :controller do
     let!(:student) { create(:student) }
 
     context 'valid id' do
-      it 'delete student' do
-        expect { delete :destroy, params: { id: student.id } }.to change(Student, :count).by(-1)
-      end
+      it { expect { delete :destroy, params: { id: student.id } }.to change(Student, :count).by(-1) }
     end
 
     context 'invalid id' do
       before { delete :destroy, params: { id: 0 } }
 
-      it 'redirect to #index' do
-        expect(response).to redirect_to(students_path)
-      end
+      it { expect(response).to redirect_to(students_path) }
     end
   end
 end
