@@ -1,26 +1,24 @@
 = stylesheet_link_tag 'views/students/index'
-= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
 
-.container.text-center
-  .row
-    .col-sm-3
+.container-fluid.text-center
+  .row.pt-4
+    .col-xl-12.my-4
       %h1 Students
   .row
-    .col-sm-12
+    .col-xl-12
       - @students.each do |student|
-        .row
+        .row.justify-content-center
           .col-sm-3
-            .card.mt-2.mb-2
+            .card.mt-2.mb-2.img-user-card
               .card-img-top.d-flex.flex-column.my-auto
                 .fa.fa-user.fa-5x.mx-auto
-          .col-sm-9
-            .card.text-center.mt-2.mb-2
+          .col-xl-9
+            .card.text-center.mt-2.mb-2.student-content
               .card-body.d-flex.flex-column
-                .card-title.mb-auto= student.name
+                %h4.card-title.mb-auto= student.name
                 .card-text.mb-auto= student.email
-                .button.btn.btn-primary.btn-block.my-auto.mx-auto
-                  = link_to student_path(student), class: 'details-button' do
-                    See details
+                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: 'Click to see student info and options' } }
+                  = link_to 'See details', student_path(student), class: 'details-button'
 
       - if @students.blank?
         %p 'Sem estudantes'

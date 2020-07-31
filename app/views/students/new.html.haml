@@ -1,2 +1,21 @@
-%h1 Students#new
-%p Find me in app/views/students/new.html.erb
+= stylesheet_link_tag 'views/students/edit'
+
+.container-fluid.my-4
+  .row
+    .col-xl-3.d-flex.justify-content-center.my-4
+      .container-fluid
+        .card.img-student
+          %h2.card-header.text-muted Student info
+          .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
+            .fa.fa-user.fa-5x.mx-auto
+          .card-body
+            .container-fluid.border-top.mt-2.py-2
+              .card-text Here some of student relations info
+
+    .col-xl-9.my-4
+      .container-fluid
+        .card
+          %h2.card-header Create New Student
+          .card-body.my-4
+            .container-fluid
+              = render 'form'

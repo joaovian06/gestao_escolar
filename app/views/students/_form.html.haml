@@ -1,0 +1,11 @@
+= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+
+= simple_form_for @student do |f|
+  = f.input :name
+  = f.input :address
+  = f.input :email
+  = f.input :birthday
+  = f.input :gender
+  = f.input :disability
+  %button.btn.btn-primary.btn-block{ type: 'form.submit'}
+    .fa.fa-paper-plane
