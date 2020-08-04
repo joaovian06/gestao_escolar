@@ -5,7 +5,6 @@
   = f.input :address
   = f.input :email
   = f.input :birthday
-  = f.input :gender
+  = f.input :gender, collection: Student.genders.keys
   = f.input :disability
-  %button.btn.btn-primary.btn-block{ type: 'form.submit'}
-    .fa.fa-paper-plane
+  = f.submit

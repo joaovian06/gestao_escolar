@@ -1,60 +1,59 @@
 = stylesheet_link_tag 'views/students/show'
 
-
 .container-fluid.my-4
   .row
     .col-xl-3.d-flex.justify-content-center.my-4
       .container-fluid
         .card.img-student
-          %h2.card-header.text-muted Student info
+          %h2.card-header.text-muted= t('.student_info_title')
           .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
             .fa.fa-user.fa-5x.mx-auto
           .card-body
             %h5.card-title.text-center= @student.name
             .container.border-top.mt-2.py-2
-              .card-text Here some of student relations info
+              .card-text= t('.student_relations_info')
 
     .col-xl-9.my-4
       .container-fluid
         .card.student-attributes-content
           .card-header
             .row
-              .col.h2 Student Attributes
+              .col.h2= t('.student_attributes_title')
               .col
                 %ul.nav.justify-content-end
                   %li.nav-item
                     %li.nav-link
-                      = link_to 'Edit', edit_student_path(@student)
+                      = link_to t('.edit'), edit_student_path(@student)
                   %li.nav-item
                     %li.nav-link
-                      = link_to 'Delete', student_path(@student),
+                      = link_to t('.delete'), student_path(@student),
                           method: :delete,
-                            data: { confirm: 'Are you sure?' }, class: 'delete-student-button'
+                            data: { confirm: t('.delete_data_confirm') }, class: 'delete-student-button'
           .card-body.my-4
             .container-fluid
               .table.border-bottom
                 .tbody
                   %tr
                     .row.border-top
-                      .col Name:
+                      .col= Student.human_attribute_name(:name)
                       .col= @student.name
                   %tr
                     .row.border-top
-                      .col Address:
+                      .col= Student.human_attribute_name(:address)
                       .col= @student.address
                   %tr
                     .row.border-top
-                      .col Email:
+                      .col= Student.human_attribute_name(:email)
                       .col= @student.email
                   %tr
                     .row.border-top
-                      .col Birthday:
-                      .col= @student.birthday
+                      .col= Student.human_attribute_name(:birthday)
+                      .col= l(@student.birthday)
                   %tr
                     .row.border-top
-                      .col Gender:
-                      .col= @student.gender
+                      .col= Student.human_attribute_name(:gender)
+                      .col= Student.human_attribute_name("gender.#{@student.gender}")
                   %tr
                     .row.border-top
-                      .col Disability:
-                      .col= @student.disability
+                      .col= Student.human_attribute_name(:disability)
+                      .col= t("boolean.#{@student.disability}")

@@ -5,30 +5,30 @@
     .col-xl-3.d-flex.justify-content-center.my-4
       .container-fluid
         .card.img-student
-          %h2.card-header.text-muted Student info
+          %h2.card-header.text-muted= t('.student_info_title')
           .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
             .fa.fa-user.fa-5x.mx-auto
           .card-body
             %h5.card-title.text-center= @student.name
             .container.border-top.mt-2.py-2
-              .card-text Here some of student relations info
+              .card-text= t('.student_relations_info')
 
     .col-xl-9.my-4
       .container-fluid
         .card
           .card-header
             .row
-              .col.h2 Edit Student attributes
+              .col.h2= t('.edit_student_attributes_title')
               .col
                 %ul.nav.justify-content-end
                   %li.nav-item
                     %li.nav-link
-                      = link_to 'Back', student_path(@student), class: 'show-student-link'
+                      = link_to t('.back'), student_path(@student), class: 'show-student-link'
                   %li.nav-item
                     %li.nav-link
-                      = link_to 'Delete', student_path(@student),
+                      = link_to t('.delete'), student_path(@student),
                     method: :delete,
-                      data: { confirm: 'Are you sure?' }, class: 'delete-student-button'
+                      data: { confirm: t('.delete_data_confirm') }, class: 'delete-student-button'
           .card-body.my-4
             .container-fluid
               = render 'form'

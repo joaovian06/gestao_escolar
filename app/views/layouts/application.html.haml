@@ -10,14 +10,5 @@
     = stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
 
   %body
-    .container-fluid.border
-      %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-        = link_to students_path, class: 'navbar-brand' do
-          .fa.fa-home.fa-2x
-        %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#navbarSupportedContent' }, 'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' }
-          %span.navbar-toggler-icon
-        .collapse.navbar-collapse#navbarSupportedContent
-          %ul.navbar-nav
-            %li.nav-item
-              = link_to 'New Student', new_student_url, class: 'nav-link'
+    = render 'shared/shared_header'
     = yield

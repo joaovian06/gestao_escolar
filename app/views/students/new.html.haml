@@ -5,17 +5,16 @@
     .col-xl-3.d-flex.justify-content-center.my-4
       .container-fluid
         .card.img-student
-          %h2.card-header.text-muted Student info
+          %h2.card-header.text-muted= t('.student_info_title')
           .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
             .fa.fa-user.fa-5x.mx-auto
           .card-body
             .container-fluid.border-top.mt-2.py-2
-              .card-text Here some of student relations info
-
+              .card-text= t('.student_relations_info')
     .col-xl-9.my-4
       .container-fluid
         .card
-          %h2.card-header Create New Student
+          %h2.card-header= t('.create_new_student')
           .card-body.my-4
             .container-fluid
               = render 'form'

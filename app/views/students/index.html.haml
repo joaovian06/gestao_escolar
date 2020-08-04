@@ -3,7 +3,7 @@
 .container-fluid.text-center
   .row.pt-4
     .col-xl-12.my-4
-      %h1 Students
+      %h1= t('.students')
   .row
     .col-xl-12
       - @students.each do |student|
@@ -18,7 +18,7 @@
                 %h4.card-title.mb-auto= student.name
                 .card-text.mb-auto= student.email
                 .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: 'Click to see student info and options' } }
-                  = link_to 'See details', student_path(student), class: 'details-button'
+                  = link_to t('.see_details'), student_path(student), class: 'details-button'
 
       - if @students.blank?
         %p 'Sem estudantes'
