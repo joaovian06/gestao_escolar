@@ -14,6 +14,9 @@ RSpec.describe Professor, type: :model do
 
       it { is_expected.to validate_presence_of(:cellphone) }
       it { is_expected.to validate_length_of(:cellphone).is_equal_to(10) }
+      it 'not allow cellphone numbers out of the pattern' do
+        is_expected.not_to allow_value('abcde-fhgj').for(:cellphone)
+      end
     end
   end
 end
