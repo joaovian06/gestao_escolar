@@ -4,10 +4,11 @@ class ProfessorsController < ApplicationController
   end
 
   def new
-    @professors = Professor.new
+    @professor = Professor.new
   end
 
   def edit
-    redirect_to professors_path
+    @professor = Professor.find_by(id: params[:id])
+    redirect_to professors_path unless @professor.present?
   end
 end
