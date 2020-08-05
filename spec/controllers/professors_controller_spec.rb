@@ -20,7 +20,7 @@ RSpec.describe ProfessorsController, type: :controller do
       before { get :edit, params: { id: 0 } }
 
       it 'render #index' do
-        expect(response).to render_template(professors_path)
+        expect(response).to redirect_to(professors_path)
       end
     end
   end

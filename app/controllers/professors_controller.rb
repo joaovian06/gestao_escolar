@@ -8,5 +8,6 @@ class ProfessorsController < ApplicationController
   end
 
   def edit
+    redirect_to professors_path
   end
 end
