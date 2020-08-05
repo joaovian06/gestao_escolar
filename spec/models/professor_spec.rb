@@ -6,7 +6,7 @@ RSpec.describe Professor, type: :model do
   describe 'validates' do
     describe 'name' do
       it 'is mandatory' do
-        is_expected.to validates_presence_of(:name)
+        is_expected.to validate_presence_of(:name)
       end
     end
   end
