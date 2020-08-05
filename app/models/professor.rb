@@ -1,6 +1,7 @@
 class Professor < ApplicationRecord
-  validates :name, presence: true,
-                  length: { minimum: 10 }
+  validates :name,
+            :cellphone,
+            presence: true
 
-  validates :cellphone, presence: true
+  validates :name, length: { minimum: 10 }
 end

@@ -12,9 +12,7 @@ RSpec.describe Professor, type: :model do
     describe 'cellphone' do
       let(:professor) { build(:professor) }
 
-      it 'is mandatory' do
-        is_expected.to validate_presence_of(:cellphone)
-      end
+      it { is_expected.to validate_presence_of(:cellphone) }
     end
   end
 end
