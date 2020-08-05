@@ -4,5 +4,9 @@ class ProfessorsController < ApplicationController
   end
 
   def new
+    @professors = Professor.new
+  end
+
+  def edit
   end
 end

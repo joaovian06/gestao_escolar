@@ -13,4 +13,15 @@ RSpec.describe ProfessorsController, type: :controller do
 
     it { expect(response).to render_template(:new) }
   end
+
+  describe '#edit' do
+    context 'invalid id' do
+      let(:professor) { create(:professor) }
+      before { get :edit, params: { id: 0 } }
+
+      it 'render #index' do
+        expect(response).to render_template(professors_path)
+      end
+    end
+  end
 end
