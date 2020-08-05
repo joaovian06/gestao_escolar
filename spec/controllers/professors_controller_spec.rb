@@ -11,8 +11,6 @@ RSpec.describe ProfessorsController, type: :controller do
   describe '#new' do
     before { get :new }
 
-    it 'render #new template' do
-      expect(response).to render_template(:new)
-    end
+    it { expect(response).to render_template(:new) }
   end
 end
