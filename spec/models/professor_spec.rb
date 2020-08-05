@@ -13,9 +13,7 @@ RSpec.describe Professor, type: :model do
       let(:professor) { build(:professor) }
 
       it { is_expected.to validate_presence_of(:cellphone) }
-      it 'have 10 caracters at minimum' do
-        is_expected.to validate_length_of(:cellphone).is_equal_to(10)
-      end
+      it { is_expected.to validate_length_of(:cellphone).is_equal_to(10) }
     end
   end
 end
