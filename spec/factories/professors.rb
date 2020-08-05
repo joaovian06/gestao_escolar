@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :professor do
     name { Faker::Name.name }
-    cellphone { Faker::PhoneNumber.cell_phone }
+    cellphone { '99999-9999' }
   end
 end
