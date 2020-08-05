@@ -5,8 +5,6 @@ RSpec.describe ProfessorsController, type: :controller do
     let!(:professors) { create_list(:professor, 10) }
     before { get :index }
 
-    it 'show all professors' do
-      expect(assigns[:professors]).to match_array(professors)
-    end
+    it { expect(assigns[:professors]).to match_array(professors) }
   end
 end
