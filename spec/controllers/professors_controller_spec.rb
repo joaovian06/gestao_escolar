@@ -33,4 +33,15 @@ RSpec.describe ProfessorsController, type: :controller do
       it { expect(response).to redirect_to(professors_path) }
     end
   end
+
+  describe '#show' do
+    context 'invalid id' do
+      let(:professor) { create(:professor) }
+      before { get :show, params: { id: professor.id } }
+
+      it 'redirect to #index' do
+        expect(response).to redirect_to(professors_path)
+      end
+    end
+  end
 end
