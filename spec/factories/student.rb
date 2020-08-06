@@ -6,9 +6,8 @@ FactoryBot.define do
     birthday { Faker::Date.birthday(min_age: 6, max_age: 18) }
     gender { Student.genders.keys.sample }
     disability { false }
-  end
-
-  trait :invalid do
-    address { '' }
+    trait :invalid do
+      address { '' }
+    end
   end
 end

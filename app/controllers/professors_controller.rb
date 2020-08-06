@@ -18,6 +18,12 @@ class ProfessorsController < ApplicationController
   end
 
   def create
-    render :new
+    puts params
+    @professor = Professor.new(params.require(:professor).permit(:name, :cellphone))
+    if @professor.save
+      redirect_to professors_path
+    else
+      render :new
+    end
   end
 end
