@@ -56,8 +56,12 @@ RSpec.describe ProfessorsController, type: :controller do
 
   describe 'create' do
     context 'invalid params' do
+      let(:professor) { build(:professor, :invalid_professor) }
+      let(:invalid_params) { professor.attributes }
+      before { post :create, params: invalid_params }
+
       it 'render #new' do
-        expect(response).to render_template(:edit)
+        expect(response).to render_template(:new)
       end
     end
   end

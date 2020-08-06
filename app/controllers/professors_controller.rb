@@ -16,4 +16,8 @@ class ProfessorsController < ApplicationController
     @professor = Professor.find_by(id: params[:id])
     redirect_to professors_path unless @professor.present?
   end
+
+  def create
+    render :new
+  end
 end

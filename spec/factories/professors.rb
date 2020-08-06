@@ -3,4 +3,8 @@ FactoryBot.define do
     name { Faker::Name.name_with_middle }
     cellphone { '99999-9999' }
   end
+
+  trait :invalid_professor do
+    name { '' }
+  end
 end
