@@ -21,4 +21,8 @@ class ProfessorsController < ApplicationController
     @professor = Professor.new(params.require(:professor).permit(:name, :cellphone))
     @professor.save ? redirect_to(professors_path) : render(:new)
   end
+
+  def update
+    redirect_to professors_path
+  end
 end

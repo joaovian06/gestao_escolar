@@ -76,9 +76,8 @@ RSpec.describe ProfessorsController, type: :controller do
 
   describe '#update' do
     context 'invalid params' do
-      let(:permitted_params) { %i[name cellphone] }
       let(:professor) { create(:professor) }
-      let(:valid_params) { { professor: professor.attributes } }
+      before { patch :update, params: { id: professor.id, professor: { name: '', cellphone: '' } } }
 
       it 'redirect to #index' do
         expect(response).to redirect_to professors_path
