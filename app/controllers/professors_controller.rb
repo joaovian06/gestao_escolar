@@ -18,16 +18,18 @@ class ProfessorsController < ApplicationController
   end
 
   def create
-    @professor = Professor.new(params.require(:professor).permit(:name, :cellphone))
+    @professor = Professor.new(professors_params)
     @professor.save ? redirect_to(professors_path) : render(:new)
   end
 
   def update
     @professor = Professor.find_by(id: params[:id])
-    if @professor.update(params.require(:professor).permit(:name, :cellphone))
-      redirect_to professors_path
-    else
-      render :edit
-    end
+    @professor.update(professors_params) ? redirect_to(professors_path) : render(:edit)
+  end
+
+  private
+
+  def professors_params
+    params.require(:professor).permit(:name, :cellphone)
   end
 end
