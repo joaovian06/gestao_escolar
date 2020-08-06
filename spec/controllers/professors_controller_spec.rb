@@ -43,14 +43,10 @@ RSpec.describe ProfessorsController, type: :controller do
         get :show, params: { id: professor.id }
       end
 
-      it 'match the professor' do
-        expect(assigns[:professor]).to eq(professor)
-      end
-
-      it 'render #show' do
-        expect(response).to render_template(:show)
-      end
+      it { expect(assigns[:professor]).to eq(professor) }
+      it { expect(response).to render_template(:show) }
     end
+
     context 'invalid id' do
       before { get :show, params: { id: 0 } }
 
