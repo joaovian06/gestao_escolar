@@ -58,23 +58,17 @@ RSpec.describe ProfessorsController, type: :controller do
     context 'valid params' do
       let(:permitted_params) { %i[name cellphone] }
       let(:professor) { build(:professor) }
-      let(:valid_params) { professor.attributes }
-      before do
-        post :create, params: { professor: valid_params }
-      end
+      let(:valid_params) { { professor: professor.attributes } }
+      before { post :create, params: valid_params }
 
-      it 'permit params' do
-        is_expected.to permit(*permitted_params).for(:create, params: { professor: valid_params }).on(:professor)
-      end
-      it 'redirects to #index' do
-        expect(response).to redirect_to professors_path
-      end
+      it { is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:professor) }
+      it { expect(response).to redirect_to professors_path }
     end
 
     context 'invalid params' do
       let(:professor) { build(:professor, :invalid) }
-      let(:invalid_params) { professor.attributes }
-      before { post :create, params: { professor: invalid_params } }
+      let(:invalid_params) { { professor: professor.attributes } }
+      before { post :create, params: invalid_params }
 
       it { expect(response).to render_template(:new) }
     end
