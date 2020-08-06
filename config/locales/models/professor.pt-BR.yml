@@ -1,0 +1,8 @@
+pt_br:
+  activerecord:
+    models:
+      professor: Professor
+    attributes:
+      professor:
+        name: Nome
+        cellphone: Celular

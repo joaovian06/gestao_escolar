@@ -1,4 +1,8 @@
 pt-BR:
   shared:
     shared_header:
+      students: Estudantes
       new_student: Cadastrar Estudante
+      professors: Professores
+      new_professor: Cadastrar Professor
+

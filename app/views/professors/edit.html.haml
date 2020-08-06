@@ -1,1 +1,35 @@
-edit.html.haml
+= stylesheet_link_tag 'views/professors/edit'
+
+.container-fluid.my-4
+  .row
+    .col-xl-3.d-flex.justify-content-center.my-4
+      .container-fluid
+        .card.img-professor
+          %h2.card-header.text-muted= t('.professor_info_title')
+          .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
+            .fa.fa-user.fa-5x.mx-auto
+          .card-body
+            %h5.card-title.text-center= @professor.name
+            .container.border-top.mt-2.py-2
+              .card-text= t('.professor_relations_info')
+
+    .col-xl-9.my-4
+      .container-fluid
+        .card
+          .card-header
+            .row
+              .col.h2= t('.edit_professor_attributes_title')
+              .col
+                %ul.nav.justify-content-end
+                  %li.nav-item
+                    %li.nav-link
+                      = link_to t('.back'), professor_path(@professor), class: 'show-professor-link'
+                  %li.nav-item
+                    %li.nav-link
+                      = link_to t('.delete'), professor_path(@professor),
+                    method: :delete,
+                      data: { confirm: t('.delete_data_confirm') }, class: 'delete-professor-button'
+          .card-body.my-4
+            .container-fluid
+              = render 'form'
+
