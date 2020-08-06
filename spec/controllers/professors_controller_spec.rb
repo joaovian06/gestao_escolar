@@ -82,10 +82,19 @@ RSpec.describe ProfessorsController, type: :controller do
       let(:permitted_params) { %i[name cellphone] }
       let(:professor) { create(:professor, name: default_professor_name) }
       let(:valid_params) { { id: professor.id, professor: professor.attributes } }
-      before { patch :update, params: { id: professor.id, professor: { name: updated_professor_name, cellphone: '' } } }
+      before { patch :update, params: { id: professor.id, professor: { name: updated_professor_name } } }
 
       it 'permit params' do
         is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:professor)
+      end
+
+      it 'update attribute' do
+        professor.reload
+        expect(professor.name).to eq updated_professor_name
+      end
+
+      it 'redirect to #index' do
+        expect(response).to redirect_to professors_path
       end
     end
 
@@ -94,7 +103,7 @@ RSpec.describe ProfessorsController, type: :controller do
       before { patch :update, params: { id: professor.id, professor: { name: updated_professor_name, cellphone: '' } } }
 
       it 'redirect to #index' do
-        expect(response).to redirect_to professors_path
+        expect(response).to render_template :edit
       end
     end
   end

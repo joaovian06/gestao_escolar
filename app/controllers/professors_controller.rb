@@ -23,6 +23,11 @@ class ProfessorsController < ApplicationController
   end
 
   def update
-    redirect_to professors_path
+    @professor = Professor.find_by(id: params[:id])
+    if @professor.update(params.require(:professor).permit(:name, :cellphone))
+      redirect_to professors_path
+    else
+      render :edit
+    end
   end
 end
