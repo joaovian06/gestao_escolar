@@ -73,4 +73,16 @@ RSpec.describe ProfessorsController, type: :controller do
       it { expect(response).to render_template(:new) }
     end
   end
+
+  describe '#update' do
+    context 'invalid params' do
+      let(:permitted_params) { %i[name cellphone] }
+      let(:professor) { create(:professor) }
+      let(:valid_params) { { professor: professor.attributes } }
+
+      it 'redirect to #index' do
+        expect(response).to redirect_to professors_path
+      end
+    end
+  end
 end
