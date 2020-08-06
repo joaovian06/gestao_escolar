@@ -35,13 +35,26 @@ RSpec.describe ProfessorsController, type: :controller do
   end
 
   describe '#show' do
-    context 'invalid id' do
-      let(:professor) { create(:professor) }
-      before { get :show, params: { id: professor.id } }
-
-      it 'redirect to #index' do
-        expect(response).to redirect_to(professors_path)
+    context 'valid id' do
+      let!(:professor) { create(:professor) }
+      before do
+        professor
+        create(:professor)
+        get :show, params: { id: professor.id }
       end
+
+      it 'match the professor' do
+        expect(assigns[:professor]).to eq(professor)
+      end
+
+      it 'render #show' do
+        expect(response).to render_template(:show)
+      end
+    end
+    context 'invalid id' do
+      before { get :show, params: { id: 0 } }
+
+      it { expect(response).to redirect_to(professors_path) }
     end
   end
 end

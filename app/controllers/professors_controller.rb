@@ -13,6 +13,11 @@ class ProfessorsController < ApplicationController
   end
 
   def show
-    redirect_to professors_path
+    @professor = Professor.find_by(id: params[:id])
+    if @professor.present?
+      render :show
+    else
+      redirect_to professors_path
+    end
   end
 end
