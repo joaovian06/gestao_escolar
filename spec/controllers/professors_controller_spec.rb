@@ -109,6 +109,11 @@ RSpec.describe ProfessorsController, type: :controller do
   end
 
   describe '#destroy' do
+    context 'valid id' do
+      before { professor }
+
+      it { expect { delete :destroy, params: { id: professor.id } }.to change(Professor, :count).by(-1) }
+    end
     context 'invalid id' do
       before do
         professor

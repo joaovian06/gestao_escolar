@@ -28,6 +28,9 @@ class ProfessorsController < ApplicationController
   end
 
   def destroy
+    @professor = Professor.find_by(id: params[:id])
+    @professor.destroy if @professor.present?
+
     redirect_to professors_path
   end
 
