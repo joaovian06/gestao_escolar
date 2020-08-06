@@ -75,9 +75,23 @@ RSpec.describe ProfessorsController, type: :controller do
   end
 
   describe '#update' do
+    let(:default_professor_name) { 'Mr. Roberto Marie' }
+    let(:updated_professor_name) { 'Tatiana Eva-Marie' }
+
+    context 'valid params' do
+      let(:permitted_params) { %i[name cellphone] }
+      let(:professor) { create(:professor, name: default_professor_name) }
+      let(:valid_params) { { id: professor.id, professor: professor.attributes } }
+      before { patch :update, params: { id: professor.id, professor: { name: updated_professor_name, cellphone: '' } } }
+
+      it 'permit params' do
+        is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:professor)
+      end
+    end
+
     context 'invalid params' do
-      let(:professor) { create(:professor) }
-      before { patch :update, params: { id: professor.id, professor: { name: '', cellphone: '' } } }
+      let(:professor) { create(:professor, name: default_professor_name) }
+      before { patch :update, params: { id: professor.id, professor: { name: updated_professor_name, cellphone: '' } } }
 
       it 'redirect to #index' do
         expect(response).to redirect_to professors_path
