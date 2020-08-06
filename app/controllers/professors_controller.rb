@@ -27,6 +27,10 @@ class ProfessorsController < ApplicationController
     @professor.update(professors_params) ? redirect_to(professors_path) : render(:edit)
   end
 
+  def destroy
+    redirect_to professors_path
+  end
+
   private
 
   def professors_params

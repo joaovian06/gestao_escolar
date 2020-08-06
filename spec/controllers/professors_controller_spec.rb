@@ -65,7 +65,7 @@ RSpec.describe ProfessorsController, type: :controller do
       before { post :create, params: valid_params }
 
       it { is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:professor) }
-      it { expect(response).to redirect_to professors_path }
+      it { expect(response).to redirect_to(professors_path) }
     end
 
     context 'invalid params' do
@@ -95,7 +95,7 @@ RSpec.describe ProfessorsController, type: :controller do
         expect(professor.name).to eq updated_professor_name
       end
 
-      it { expect(response).to redirect_to professors_path }
+      it { expect(response).to redirect_to(professors_path) }
     end
 
     context 'invalid params' do
@@ -116,7 +116,7 @@ RSpec.describe ProfessorsController, type: :controller do
       end
 
       it 'redirect to #index' do
-        expect(response).to redirect_to professors_path
+        expect(response).to redirect_to(professors_path)
       end
     end
   end
