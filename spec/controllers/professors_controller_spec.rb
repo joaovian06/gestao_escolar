@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ProfessorsController, type: :controller do
   describe '#index' do
-    let!(:professors) { create_list(:professor, 10) }
+    let(:professors) { create_list(:professor, 10) }
     before { get :index }
 
     it { expect(assigns[:professors]).to match_array(professors) }
@@ -36,7 +36,7 @@ RSpec.describe ProfessorsController, type: :controller do
 
   describe '#show' do
     context 'valid id' do
-      let!(:professor) { create(:professor) }
+      let(:professor) { create(:professor) }
       before do
         professor
         create(:professor)
@@ -51,6 +51,14 @@ RSpec.describe ProfessorsController, type: :controller do
       before { get :show, params: { id: 0 } }
 
       it { expect(response).to redirect_to(professors_path) }
+    end
+  end
+
+  describe 'create' do
+    context 'invalid params' do
+      it 'render #new' do
+        expect(response).to render_template(:edit)
+      end
     end
   end
 end
