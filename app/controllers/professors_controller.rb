@@ -10,11 +10,11 @@ class ProfessorsController < ApplicationController
   end
 
   def edit
-    redirect_index
+    redirect_index_missing_professor
   end
 
   def show
-    redirect_index
+    redirect_index_missing_professor
   end
 
   def create
@@ -28,13 +28,13 @@ class ProfessorsController < ApplicationController
 
   def destroy
     @professor.destroy if @professor.present?
-    redirect_index
+    redirect_index_missing_professor
   end
 
   private
 
-  def redirect_index
-    redirect_to professors_path unless @professor.present?
+  def redirect_index_missing_professor
+    redirect_to(professors_path) unless @professor.present?
   end
 
   def find_professor
