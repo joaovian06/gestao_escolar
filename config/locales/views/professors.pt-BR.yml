@@ -1,0 +1,19 @@
+pt-BR:
+  professors:
+    index:
+      professors: Professores
+      see_details: Ver detalhes
+    show: &infos
+      professor_info_title: Informacões do Professor
+      professor_attributes_title: Atributos do Professor
+      edit: Editar
+      delete: Deletar
+      delete_data_confirm: Você tem certeza?
+      professor_relations_info: Relações de informacões do Professor aqui
+    edit:
+      edit_professor_attributes_title: Editar Atributos do Professor
+      back: Voltar
+      <<: *infos
+    new:
+      create_new_professor: Cadastrar novo Professor
+      <<: *infos
