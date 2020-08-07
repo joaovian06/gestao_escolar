@@ -10,12 +10,11 @@ class ProfessorsController < ApplicationController
   end
 
   def edit
-    @professor = Professor.find_by(id: params[:id])
-    redirect_to professors_path unless @professor.present?
+    redirect_index
   end
 
   def show
-    redirect_to professors_path unless @professor.present?
+    redirect_index
   end
 
   def create
@@ -29,11 +28,14 @@ class ProfessorsController < ApplicationController
 
   def destroy
     @professor.destroy if @professor.present?
-
-    redirect_to professors_path
+    redirect_index
   end
 
   private
+
+  def redirect_index
+    redirect_to professors_path unless @professor.present?
+  end
 
   def find_professor
     @professor = Professor.find_by(id: params[:id])
