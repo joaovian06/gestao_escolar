@@ -1,4 +1,6 @@
 class ProfessorsController < ApplicationController
+  before_action :find_professor, only: %i[show edit update destroy]
+
   def index
     @professors = Professor.all
   end
@@ -13,7 +15,6 @@ class ProfessorsController < ApplicationController
   end
 
   def show
-    @professor = Professor.find_by(id: params[:id])
     redirect_to professors_path unless @professor.present?
   end
 
@@ -23,18 +24,20 @@ class ProfessorsController < ApplicationController
   end
 
   def update
-    @professor = Professor.find_by(id: params[:id])
     @professor.update(professors_params) ? redirect_to(professors_path) : render(:edit)
   end
 
   def destroy
-    @professor = Professor.find_by(id: params[:id])
     @professor.destroy if @professor.present?
 
     redirect_to professors_path
   end
 
   private
+
+  def find_professor
+    @professor = Professor.find_by(id: params[:id])
+  end
 
   def professors_params
     params.require(:professor).permit(:name, :cellphone)
