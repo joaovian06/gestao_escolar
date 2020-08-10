@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_122154) do
+ActiveRecord::Schema.define(version: 2020_08_07_154719) do
+
+  create_table "classrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "school_period"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "year"
+  end
 
   create_table "professors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
