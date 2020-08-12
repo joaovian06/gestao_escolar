@@ -1,2 +1,25 @@
-%h1 Classrooms#edit
-%p Find me in app/views/classrooms/edit.html.haml
+= stylesheet_link_tag 'views/classrooms/edit'
+
+.container-fluid.my-4
+  .row
+    = render 'classroom_info'
+
+    .col-xl-9.my-4
+      .container-fluid
+        .card
+          .card-header
+            .row
+              .col.h2= t('.edit_classroom_attributes_title')
+              .col
+                %ul.nav.justify-content-end
+                  %li.nav-item
+                    %li.nav-link
+                      = link_to t('.back'), classroom_path(@classroom), class: 'show-classroom-link'
+                  %li.nav-item
+                    %li.nav-link
+                      = link_to t('.delete'), classroom_path(@classroom),
+                    method: :delete,
+                      data: { confirm: t('.delete_data_confirm') }, class: 'delete-classroom-button'
+          .card-body.my-4
+            .container-fluid
+              = render 'form'

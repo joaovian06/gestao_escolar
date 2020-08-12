@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 # Specs in this file have access to a helper object that includes
 # the ClassroomsHelper. For example:
 #
@@ -11,5 +10,9 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe ClassroomsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'classroom_school_periods_for_select' do
+    it 'translate options and set school period' do
+      expect(helper.classroom_school_periods_for_select).to eq(Classroom.school_periods.map { |k, v| [Classroom.human_attribute_name("school_period.#{k}"), k] })
+    end
+  end
 end

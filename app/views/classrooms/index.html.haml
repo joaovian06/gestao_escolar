@@ -1,2 +1,20 @@
-%h1 Classrooms#index
-%p Find me in app/views/classrooms/index.html.haml
+= stylesheet_link_tag 'views/classrooms/index'
+
+.container-fluid.text-center
+  .row.pt-4
+    .col-xl-12.my-4
+      %h1= t('.classrooms')
+  .row
+    .col-xl-12
+      - @classrooms.each do |classroom|
+        .row.justify-content-center
+          .col-xl-12
+            .card.text-center.mt-2.mb-2.classroom-content
+              .card-body.d-flex.flex-column
+                %h4.card-title.mb-auto= classroom.name
+                .card-text.mb-auto= classroom.year
+                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: 'Click to see classroom info and options' } }
+                  = link_to t('.see_details'), classroom_path(classroom), class: 'details-button'
+
+      - if @classrooms.blank?
+        %p 'Sem classrooms'

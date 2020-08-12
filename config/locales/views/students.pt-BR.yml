@@ -4,12 +4,10 @@ pt-BR:
       students: Estudantes
       see_details: Ver detalhes
     show: &infos
-      student_info_title: Informacões do Estudante
       student_attributes_title: Atributos do Estudante
       edit: Editar
       delete: Deletar
       delete_data_confirm: Você tem certeza?
-      student_relations_info: Relações de informacões do estudante aqui
     edit:
       edit_student_attributes_title: Editar Atributos do Estudante
       back: Voltar
@@ -17,3 +15,6 @@ pt-BR:
     new:
       create_new_student: Cadastrar novo estudante
       <<: *infos
+    student_info:
+      student_info_title: Informacões do Estudante
+      student_relations_info: Relações de informacões do estudante aqui

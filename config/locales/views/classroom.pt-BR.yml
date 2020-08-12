@@ -1,0 +1,20 @@
+pt-BR:
+  classrooms:
+    index:
+      classrooms: Turmas
+      see_details: Ver Detalhes
+    show: &infos
+      classroom_attributes_title: Atributos da turma
+      edit: Editar
+      delete: Deletar
+      delete_data_confirm: Você tem certeza?
+    edit:
+      edit_classroom_attributes_title: Editar Atributos da turma
+      back: Voltar
+      <<: *infos
+    new:
+      create_new_classroom: Cadastrar nova turma
+      <<: *infos
+    classroom_info:
+      classroom_info_title: Informações da turma
+      classroom_relations_info: Relações de informações da turma aqui

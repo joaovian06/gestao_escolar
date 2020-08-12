@@ -1,5 +1,4 @@
 require 'rails_helper'
-
 # Specs in this file have access to a helper object that includes
 # the StudentsHelper. For example:
 #
@@ -11,5 +10,9 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe StudentsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'student_genders_for_select' do
+    it 'translate and set gender' do
+      expect(helper.student_genders_for_select).to eq(Student.genders.map { |k, v| [Student.human_attribute_name("gender.#{k}"), k] })
+    end
+  end
 end

@@ -11,6 +11,10 @@
         %li.nav-item
           = link_to t('.professors'), professors_path, class: 'nav-link'
         %li.nav-item
-          = link_to t('.new_student'), new_student_url, class: 'nav-link'
-        %li.nav-item
-          = link_to t('.new_professor'), new_professor_url, class: 'nav-link'
+          = link_to t('.classrooms'), classrooms_path, class: 'nav-link'
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"aria-expande": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#", role: "button"}= t('.register')
+          .dropdown-menu
+            = link_to t('.new_student'), new_student_url, class: 'nav-link'
+            = link_to t('.new_professor'), new_professor_url, class: 'nav-link'
+            = link_to t('.new_classroom'), new_classroom_url, class: 'nav-link'

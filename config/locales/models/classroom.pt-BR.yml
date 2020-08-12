@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models:
+      classroom:
+    attributes:
+      classroom:
+        name: Nome
+        school_period: Período Escolar
+        year: Ano
+      classroom/school_period:
+        morning: Matutino
+        afternoon: Vespertino
+        night: Noturno
