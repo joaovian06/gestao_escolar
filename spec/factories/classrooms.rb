@@ -5,7 +5,7 @@ FactoryBot.define do
     year { 2020 }
 
     trait :invalid do
-      year { 2019 }
+      year { nil }
     end
   end
 end
