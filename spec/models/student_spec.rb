@@ -38,4 +38,9 @@ RSpec.describe Student, type: :model do
       end
     end
   end
+
+  describe 'mounts' do
+
+    it { expect(student.avatar).to be_a(AvatarUploader) }
+  end
 end

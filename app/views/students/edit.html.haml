@@ -14,12 +14,12 @@
                 %ul.nav.justify-content-end
                   %li.nav-item
                     %li.nav-link
-                      = link_to t('.back'), student_path(@student), class: 'show-student-link'
+                      = link_to t('.back'), student_path(@student)
                   %li.nav-item
                     %li.nav-link
                       = link_to t('.delete'), student_path(@student),
                     method: :delete,
-                      data: { confirm: t('.delete_data_confirm') }, class: 'delete-student-button'
+                      data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
           .card-body.my-4
             .container-fluid
               = render 'form'

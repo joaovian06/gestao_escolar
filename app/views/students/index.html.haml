@@ -17,8 +17,8 @@
               .card-body.d-flex.flex-column
                 %h4.card-title.mb-auto= student.name
                 .card-text.mb-auto= student.email
-                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: 'Click to see student info and options' } }
+                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_student_info_and_options') } }
                   = link_to t('.see_details'), student_path(student), class: 'details-button'
 
       - if @students.blank?
-        %p 'Sem estudantes'
+        %p t(.'no_students')

@@ -65,6 +65,7 @@ RSpec.describe ClassroomsController, type: :controller do
       let(:valid_params) { { classroom: classroom.attributes } }
       before { post :create, params: valid_params }
 
+      it { expect(controller).to set_flash[:success] }
       it { is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:classroom) }
       it { expect(response).to redirect_to(classrooms_path) }
     end
@@ -74,6 +75,7 @@ RSpec.describe ClassroomsController, type: :controller do
       let(:invalid_params) { { classroom: classroom.attributes } }
       before { post :create, params: invalid_params }
 
+      it { expect(controller).to set_flash[:error] }
       it { expect(response).to render_template(:new) }
     end
   end
@@ -89,6 +91,7 @@ RSpec.describe ClassroomsController, type: :controller do
         patch :update, params: { id: classroom.id, classroom: { name: updated_class_name } }
       end
 
+      it { expect(controller).to set_flash[:success] }
       it { is_expected.to permit(*permitted_params).for(:update, params: valid_params).on(:classroom) }
 
       it 'update classroom attributes' do
@@ -105,6 +108,7 @@ RSpec.describe ClassroomsController, type: :controller do
         patch :update, params: { id: classroom.id, classroom: { name: updated_class_name, year: "" } }
       end
 
+      it { expect(controller).to set_flash[:error] }
       it { expect(response).to render_template(:edit) }
     end
   end
@@ -114,6 +118,10 @@ RSpec.describe ClassroomsController, type: :controller do
       before { classroom }
 
       it { expect { delete :destroy, params: { id: classroom.id } }.to change(Classroom, :count).by(-1) }
+      it do
+        delete :destroy, params: { id: classroom.id }
+        expect(controller).to set_flash[:success]
+      end
     end
 
     context 'invalid id' do
@@ -122,6 +130,7 @@ RSpec.describe ClassroomsController, type: :controller do
         delete :destroy, params: { id: 0 }
       end
 
+      it { expect(controller).to set_flash[:error] }
       it { expect(response).to redirect_to(classrooms_path) }
     end
   end

@@ -1,6 +1,16 @@
 = stylesheet_link_tag 'views/classrooms/index'
 
+
+
 .container-fluid.text-center
+  - if flash[:success]
+    .alert.alert-success.my-4
+      = flash[:success]
+
+  - if flash[:error]
+    .alert.alert-danger.my-4
+      = flash[:error]
+
   .row.pt-4
     .col-xl-12.my-4
       %h1= t('.classrooms')
@@ -13,8 +23,8 @@
               .card-body.d-flex.flex-column
                 %h4.card-title.mb-auto= classroom.name
                 .card-text.mb-auto= classroom.year
-                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: 'Click to see classroom info and options' } }
+                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_classroom_info_and_options') } }
                   = link_to t('.see_details'), classroom_path(classroom), class: 'details-button'
 
       - if @classrooms.blank?
-        %p 'Sem classrooms'
+        %p t('.no_classrooms')

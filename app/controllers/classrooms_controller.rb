@@ -19,15 +19,32 @@ class ClassroomsController < ApplicationController
 
   def create
     @classroom = Classroom.new(classrooms_params)
-    @classroom.save ? redirect_to(classrooms_path) : render(:new)
+    if @classroom.save
+      flash[:success] = t('.success')
+      redirect_to(classrooms_path)
+    else
+      flash[:error] = t('.error')
+      render(:new)
+    end
   end
 
   def update
-    @classroom.update(classrooms_params) ? redirect_to(classrooms_path) : render(:edit)
+    if @classroom.update(classrooms_params)
+      flash[:success] = t('.success')
+      redirect_to(classrooms_path)
+    else
+      flash[:error] = t('.error')
+      render(:edit)
+    end
   end
 
   def destroy
-    @classroom.destroy if @classroom.present?
+    if @classroom.present?
+      @classroom.destroy
+      flash[:success] = t('.success')
+    else
+      flash[:error] = t('.error')
+    end
     redirect_to(classrooms_path)
   end
 
