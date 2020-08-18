@@ -17,8 +17,8 @@
               .card-body.d-flex.flex-column
                 %h4.card-title.mb-auto= professor.name
                 .card-text.mb-auto= professor.cellphone
-                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: 'Click to see professor info and options' } }
+                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_professor_info_and_options') } }
                   = link_to t('.see_details'), professor_path(professor), class: 'details-button'
 
       - if @professors.blank?
-        %p 'Sem professores'
+        %p t('.no_professors')

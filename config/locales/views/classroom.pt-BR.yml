@@ -2,7 +2,9 @@ pt-BR:
   classrooms:
     index:
       classrooms: Turmas
+      click_to_see_classroom_info_and_options: Clique para ver informações e opções da Turma
       see_details: Ver Detalhes
+      no_classrooms: Nenhuma Turma
     show: &infos
       classroom_attributes_title: Atributos da turma
       edit: Editar

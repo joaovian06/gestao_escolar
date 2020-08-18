@@ -19,7 +19,7 @@
                     %li.nav-link
                       = link_to t('.delete'), professor_path(@professor),
                           method: :delete,
-                            data: { confirm: t('.delete_data_confirm') }, class: 'delete-professor-button'
+                            data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
           .card-body.my-4
             .container-fluid
               .table.border-bottom

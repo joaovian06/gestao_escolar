@@ -2,7 +2,9 @@ pt-BR:
   students:
     index:
       students: Estudantes
+      click_to_see_student_info_and_options: Clique para ver informações e opções do estudante
       see_details: Ver detalhes
+      no_students: Sem Estudantes
     show: &infos
       student_attributes_title: Atributos do Estudante
       edit: Editar
