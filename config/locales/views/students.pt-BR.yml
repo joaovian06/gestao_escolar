@@ -2,14 +2,14 @@ pt-BR:
   students:
     index:
       students: Estudantes
+      click_to_see_student_info_and_options: Clique para ver informações e opções do estudante
       see_details: Ver detalhes
+      no_students: Sem Estudantes
     show: &infos
-      student_info_title: Informacões do Estudante
       student_attributes_title: Atributos do Estudante
       edit: Editar
       delete: Deletar
       delete_data_confirm: Você tem certeza?
-      student_relations_info: Relações de informacões do estudante aqui
     edit:
       edit_student_attributes_title: Editar Atributos do Estudante
       back: Voltar
@@ -17,3 +17,6 @@ pt-BR:
     new:
       create_new_student: Cadastrar novo estudante
       <<: *infos
+    student_info:
+      student_info_title: Informacões do Estudante
+      student_relations_info: Relações de informacões do estudante aqui

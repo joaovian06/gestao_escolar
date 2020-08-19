@@ -2,6 +2,8 @@
 
 # classe model estudante
 class Student < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
+
   enum gender: %i[male female]
 
   validates :name,

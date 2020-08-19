@@ -1,0 +1,15 @@
+.container-fluid
+  .container-fluid.py-4
+    .row
+      .col-xl-3
+        .card
+          %h2.card-title= link_to t('.students'), students_path
+      .col-xl-3
+        .card
+          %h2.card-title= link_to t('.professors'), professors_path
+      .col-xl-3
+        .card
+          %h2.card-title= link_to t('.classrooms'), classrooms_path
+      .col-xl-3
+        .card
+          %h2.card-title= link_to t('.enrollments')

@@ -1,0 +1,28 @@
+= stylesheet_link_tag 'views/classrooms/edit'
+
+.container-fluid.my-4
+  - if flash[:error]
+    .alert.alert-danger.text-center.my-4
+      = flash[:error]
+  .row
+    = render 'classroom_info'
+
+    .col-xl-9.my-4
+      .container-fluid
+        .card
+          .card-header
+            .row
+              .col.h2= t('.edit_classroom_attributes_title')
+              .col
+                %ul.nav.justify-content-end
+                  %li.nav-item
+                    %li.nav-link
+                      = link_to t('.back'), classroom_path(@classroom)
+                  %li.nav-item
+                    %li.nav-link
+                      = link_to t('.delete'), classroom_path(@classroom),
+                    method: :delete,
+                      data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
+          .card-body.my-4
+            .container-fluid
+              = render 'form'

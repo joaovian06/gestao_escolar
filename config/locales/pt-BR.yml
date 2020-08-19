@@ -1,4 +1,18 @@
 pt-BR:
+  layouts:
+    application:
+      school_management: Gestão Escolar
+  classrooms:
+    create:
+      success: Turma Criada com sucesso.
+      error: Não foi possivel criar Turma.
+    update:
+      success: Turma atualizada com sucesso.
+      error: Não foi possivel atualizar a turma.
+    destroy:
+      success: Turma excluída com sucesso.
+      error: Não foi possivel excluir a turma.
+
   activerecord:
     errors:
       messages:

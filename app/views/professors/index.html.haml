@@ -1,4 +1,4 @@
-= stylesheet_link_tag 'views/students/index'
+= stylesheet_link_tag 'views/professors/index'
 
 .container-fluid.text-center
   .row.pt-4
@@ -13,12 +13,12 @@
               .card-img-top.d-flex.flex-column.my-auto
                 .fa.fa-user.fa-5x.mx-auto
           .col-xl-9
-            .card.text-center.mt-2.mb-2.student-content
+            .card.text-center.mt-2.mb-2.professor-content
               .card-body.d-flex.flex-column
                 %h4.card-title.mb-auto= professor.name
                 .card-text.mb-auto= professor.cellphone
-                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: 'Click to see student info and options' } }
+                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_professor_info_and_options') } }
                   = link_to t('.see_details'), professor_path(professor), class: 'details-button'
 
       - if @professors.blank?
-        %p 'Sem professores'
+        %p t('.no_professors')

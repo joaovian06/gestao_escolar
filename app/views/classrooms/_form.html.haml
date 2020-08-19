@@ -1,0 +1,5 @@
+= simple_form_for @classroom do |f|
+  = f.input :name
+  = f.input :school_period, collection: classroom_school_periods_for_select
+  = f.input :year
+  = f.submit

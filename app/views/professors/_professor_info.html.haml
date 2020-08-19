@@ -1,11 +1,11 @@
-.row
-  .col-xl-3.d-flex.justify-content-center.my-4
-    .container-fluid
-      .card.img-professor
-        %h2.card-header.text-muted= t('.professor_info_title')
-        .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
-          .fa.fa-user.fa-5x.mx-auto
-        .card-body
-          %h5.card-title.text-center= @professor.name
-          .container.border-top.mt-2.py-2
-            .card-text= t('.professor_relations_info')
+
+.col-xl-3.d-flex.justify-content-center.my-4
+  .container-fluid
+    .card.img-professor
+      %h2.card-header.text-muted= t('.professor_info_title')
+      .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
+        .fa.fa-user.fa-5x.mx-auto
+      .card-body
+        %h5.card-title.text-center= @professor.name
+        .container.border-top.mt-2.py-2
+          .card-text= t('.professor_relations_info')
