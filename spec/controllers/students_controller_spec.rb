@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe StudentsController, type: :controller do
   let(:student) { build(:student) }
-  let(:permitted_params) { %i[name address email birthday gender disability] }
+  let(:permitted_params) { %i[name address email birthday gender disability avatar] }
   let(:valid_params) { { student: student.attributes } }
 
   describe '#index' do
