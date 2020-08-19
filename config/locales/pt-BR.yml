@@ -1,4 +1,7 @@
 pt-BR:
+  layouts:
+    application:
+      school_management: Gestão Escolar
   classrooms:
     create:
       success: Turma Criada com sucesso.
