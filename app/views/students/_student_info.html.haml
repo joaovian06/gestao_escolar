@@ -2,8 +2,11 @@
   .container-fluid
     .card.img-student
       %h2.card-header.text-muted= t('.student_info_title')
-      .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
-        .fa.fa-user.fa-5x.mx-auto
+      .card-img-top.d-flex.flex-column.align-self-center.my-4
+        - if @student.avatar.present?
+          = image_tag @student.avatar.thumb.url
+        - else
+          .fa.fa-user.fa-5x.mx-auto
       .card-body
         %h5.card-title.text-center= @student.name
         .container.border-top.mt-2.py-2

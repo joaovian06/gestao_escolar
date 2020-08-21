@@ -8,16 +8,20 @@
     .col-xl-12
       - @students.each do |student|
         .row.justify-content-center
-          .col-sm-3
-            .card.mt-2.mb-2.img-user-card
-              .card-img-top.d-flex.flex-column.my-auto
-                .fa.fa-user.fa-5x.mx-auto
+          .col-lg-1.px-0
+            .card.mt-2.mb-2.img-user-card.mx-auto
+              .card-img-top.d-flex.flex-column.my-auto.h-auto.w-auto.align-self-center
+                - if student.avatar.present?
+                  = image_tag student.avatar.index_thumb.url
+                - else
+                  .fa.fa-user.fa-5x
+
           .col-xl-9
             .card.text-center.mt-2.mb-2.student-content
               .card-body.d-flex.flex-column
                 %h4.card-title.mb-auto= student.name
                 .card-text.mb-auto= student.email
-                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_student_info_and_options') } }
+                .button.btn.btn-primary.my-auto{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_student_info_and_options') } }
                   = link_to t('.see_details'), student_path(student), class: 'details-button'
 
       - if @students.blank?

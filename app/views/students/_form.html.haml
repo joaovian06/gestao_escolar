@@ -1,6 +1,9 @@
-= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
-
 = simple_form_for @student do |f|
+  = f.label :avatar
+  .div.mb-2
+    - if @student.avatar.present?
+      = image_tag @student.avatar.edit_thumb.url
+  = f.input_field :avatar
   = f.input :name
   = f.input :address
   = f.input :email
