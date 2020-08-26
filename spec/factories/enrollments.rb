@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :enrollment do
-    sequence(:registration_num) { |n| "#{n}".rjust(11 - n.to_s.length, "0") }
+    sequence(:registration_num) { |n| "#{classroom.year}#{n}" }
     student
     classroom
 
