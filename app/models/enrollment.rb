@@ -9,5 +9,9 @@ class Enrollment < ApplicationRecord
 
   validates :registration_num, uniqueness: true
 
-  validates_length_of :registration_num, minimum: 10
+  validates :student_id, uniqueness: { scoped: :classroom_id }
+
+  validates_length_of :registration_num, minimum: 5
 end
+
+
