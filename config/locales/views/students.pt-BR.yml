@@ -20,3 +20,8 @@ pt-BR:
     student_info:
       student_info_title: Informações do Estudante
       student_relations_info: Relações de informacões do estudante aqui
+    form:
+      enrollments: Matrículas do Estudante
+      add_enrollment: Nova Matrícula
+    enrollments_fields:
+      remove_enrollments: Remover Matrícula
