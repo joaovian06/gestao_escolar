@@ -13,7 +13,7 @@
   %h3= t('.enrollments')
   #enrollments
     = f.simple_fields_for :enrollments do |enrollment|
-      = render 'enrollments/enrollment_field', f: enrollment
+      = render 'enrollment_fields', f: enrollment
     .links
       = link_to_add_association t('.add_enrollment'), f, :enrollments
   = f.submit

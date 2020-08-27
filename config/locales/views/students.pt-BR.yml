@@ -23,5 +23,5 @@ pt-BR:
     form:
       enrollments: Matrículas do Estudante
       add_enrollment: Nova Matrícula
-    enrollments_fields:
-      remove_enrollments: Remover Matrícula
+    enrollment_fields:
+      remove_enrollment: Remover Matrícula
