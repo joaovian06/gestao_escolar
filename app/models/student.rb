@@ -2,6 +2,9 @@
 
 # classe model estudante
 class Student < ApplicationRecord
+  has_many :enrollments
+  accepts_nested_attributes_for :enrollments
+
   mount_uploader :avatar, AvatarUploader
 
   enum gender: %i[male female]

@@ -43,4 +43,9 @@ RSpec.describe Student, type: :model do
 
     it { expect(student.avatar).to be_a(AvatarUploader) }
   end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:enrollments) }
+    it { is_expected.to accept_nested_attributes_for(:enrollments) }
+  end
 end
