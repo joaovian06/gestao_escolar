@@ -2,7 +2,7 @@
 
 # classe model estudante
 class Student < ApplicationRecord
-  has_many :enrollments
+  has_many :enrollments, inverse_of: :student
   accepts_nested_attributes_for :enrollments
 
   mount_uploader :avatar, AvatarUploader

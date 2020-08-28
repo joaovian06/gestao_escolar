@@ -1,5 +1,5 @@
 class Classroom < ApplicationRecord
-  has_many :enrollments
+  has_many :enrollments, inverse_of: :classroom
   accepts_nested_attributes_for :enrollments
 
   enum school_period: %i[morning afternoon night]
