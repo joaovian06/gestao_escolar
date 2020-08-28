@@ -4,7 +4,7 @@ pt-BR:
       professors: Professores
       click_to_see_professor_info_and_options: Clique para ver informações e opções do Professor
       see_details: Ver detalhes
-      no_professors: Sem Professores
+      no_professors: Nenhum Professores
     show: &infos
       professor_attributes_title: Atributos do Professor
       edit: Editar
