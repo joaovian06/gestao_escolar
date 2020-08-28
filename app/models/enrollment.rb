@@ -1,17 +1,21 @@
 class Enrollment < ApplicationRecord
-  belongs_to :student
-  belongs_to :classroom
+  before_validation :set_registration_num
 
-  validates :registration_num,
-            :student,
+  belongs_to :student, inverse_of: :enrollments
+  belongs_to :classroom, inverse_of: :enrollments
+
+  validates :student,
             :classroom,
             presence: true
 
-  validates :registration_num, uniqueness: true
 
-  validates :student_id, uniqueness: { scoped: :classroom_id }
+  validates :student_id, uniqueness: { scope: :classroom_id }
 
-  validates_length_of :registration_num, minimum: 5
+  private
+
+  def set_registration_num
+    self.registration_num = "#{Time.now.to_f}"
+  end
 end
 
 
