@@ -16,6 +16,6 @@ RSpec.describe ClassroomsHelper, type: :helper do
 
     before { create_list(:classroom, 3) }
 
-    fit { expect(classrooms_for_select).to eq(expected) }
+    it { expect(classrooms_for_select).to eq(expected) }
   end
 end

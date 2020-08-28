@@ -4,4 +4,10 @@ module StudentsHelper
       [Student.human_attribute_name("gender.#{keys}"), keys]
     end
   end
+
+  def students_for_select
+    Student.all.map do |student|
+      ["#{student.name}", student.id]
+    end
+  end
 end
