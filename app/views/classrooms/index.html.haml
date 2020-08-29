@@ -1,8 +1,6 @@
 = stylesheet_link_tag 'views/classrooms/index'
 
-
-
-.container-fluid.text-center
+.container-fluid.text-center.bg-light
   - if flash[:success]
     .alert.alert-success.my-4
       = flash[:success]
@@ -17,14 +15,15 @@
   .row
     .col-xl-12
       - @classrooms.each do |classroom|
-        .row.justify-content-center
-          .col-xl-12
-            .card.text-center.mt-2.mb-2.classroom-content
-              .card-body.d-flex.flex-column
-                %h4.card-title.mb-auto= classroom.name
-                .card-text.mb-auto= classroom.year
-                .button.btn.btn-primary.btn-block.my-auto{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_classroom_info_and_options') } }
-                  = link_to t('.see_details'), classroom_path(classroom), class: 'details-button'
+        .container-fluid.border.rounded.w-50.shadow.my-4.bg-white
+          .row.justify-content-center
+            .col-xl-12
+              .card.text-center.mt-2.mb-2.classroom-content.bg-light.shadow-sm
+                .card-body
+                  %h4.card-title.mb-auto= classroom.name
+                  .card-text.mb-auto= classroom.year
+                  .button.btn.btn-dark.shadow.mt-2{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_classroom_info_and_options') } }
+                    = link_to t('.see_details'), classroom_path(classroom), class: 'details-button'
 
       - if @classrooms.blank?
         %p t('.no_classrooms')

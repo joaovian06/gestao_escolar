@@ -1,11 +1,13 @@
 = simple_form_for @classroom do |f|
-  = f.input :name
-  = f.input :school_period, collection: classroom_school_periods_for_select
-  = f.input :year
-  %h3= t('.enrollments')
-  #enrollments
-    = f.simple_fields_for :enrollments do |enrollment|
-      = render 'enrollment_fields', f: enrollment
-    .links
-      = link_to_add_association t('.add_enrollment'), f, :enrollments
+  .container-fluid.border.rounded.py-2.mb-4.shadow-sm.bg-light
+    = f.input :name
+    = f.input :school_period, collection: classroom_school_periods_for_select
+    = f.input :year
+  .container-fluid.border.rounded.my-4.py-4.shadow-sm.bg-light
+    %h3= t('.enrollments')
+    #enrollments
+      = f.simple_fields_for :enrollments do |enrollment|
+        = render 'enrollment_fields', f: enrollment
+      .links
+        = link_to_add_association t('.add_enrollment'), f, :enrollments
   = f.submit

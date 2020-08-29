@@ -1,13 +1,13 @@
 = stylesheet_link_tag 'views/classrooms/show'
 
-.container-fluid.my-4
+.container-fluid.my-4.bg-light
   .row
     = render 'classroom_info'
 
     .col-xl-9.my-4
       .container-fluid
-        .card.classroom-attributes-content
-          .card-header
+        .card.classroom-attributes-content.shadow
+          .card-header.shadow-sm
             .row
               .col.h2= t('.classroom_attributes_title')
               .col
@@ -22,17 +22,17 @@
                             data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
           .card-body.my-4
             .container-fluid
-              .table.border-bottom
+              .table.border.rounded.shadow-sm.bg-light
                 .tbody
                   %tr
-                    .row.border-top
+                    .row.p-2.m-0.border-bottom
                       .col= Classroom.human_attribute_name(:name)
                       .col= @classroom.name
                   %tr
-                    .row.border-top
+                    .row.p-2.m-0.border-bottom
                       .col= Classroom.human_attribute_name(:school_period)
                       .col= Classroom.human_attribute_name("school_period.#{@classroom.school_period}")
                   %tr
-                    .row.border-top
+                    .row.p-2.m-0.border-bottom
                       .col= Classroom.human_attribute_name(:year)
                       .col= @classroom.year
