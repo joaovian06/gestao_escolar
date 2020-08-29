@@ -1,28 +1,29 @@
 = stylesheet_link_tag 'views/students/index'
 
-.container-fluid.text-center
+.container-fluid.text-center.bg-light
   .row.pt-4
     .col-xl-12.my-4
       %h1= t('.students')
   .row
     .col-xl-12
       - @students.each do |student|
-        .row.justify-content-center
-          .col-lg-1.px-0
-            .card.mt-2.mb-2.img-user-card.mx-auto
-              .card-img-top.d-flex.flex-column.my-auto.h-auto.w-auto.align-self-center
-                - if student.avatar.present?
-                  = image_tag student.avatar.index_thumb.url
-                - else
-                  .fa.fa-user.fa-5x
+        .container-fluid.border.rounded.my-4.w-75.shadow.bg-white
+          .row
+            .col-lg-2.px-0
+              .card.mt-2.mb-2.img-user-card.mx-3.shadow-sm.bg-light
+                .card-img-top.d-flex.flex-column.my-auto.h-auto.w-auto.align-self-center
+                  - if student.avatar.present?
+                    = image_tag student.avatar.index_thumb.url
+                  - else
+                    .fa.fa-user.fa-5x
 
-          .col-xl-9
-            .card.text-center.mt-2.mb-2.student-content
-              .card-body.d-flex.flex-column
-                %h4.card-title.mb-auto= student.name
-                .card-text.mb-auto= student.email
-                .button.btn.btn-primary.my-auto{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_student_info_and_options') } }
-                  = link_to t('.see_details'), student_path(student), class: 'details-button'
+            .col-xl-10
+              .card.text-center.mt-2.mb-2.student-content.shadow-sm.bg-light
+                .card-body.d-flex.flex-column
+                  %h4.card-title.mb-auto= student.name
+                  .card-text.mb-auto= student.email
+                  .button.btn.btn-dark.my-auto.shadow{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_student_info_and_options') } }
+                    = link_to t('.see_details'), student_path(student), class: 'details-button'
 
       - if @students.blank?
         %p t(.'no_students')

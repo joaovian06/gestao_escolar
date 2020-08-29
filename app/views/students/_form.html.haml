@@ -1,19 +1,22 @@
 = simple_form_for @student do |f|
-  = f.label :avatar
-  .div.mb-2
-    - if @student.avatar.present?
-      = image_tag @student.avatar.edit_thumb.url
-  = f.input_field :avatar
-  = f.input :name
-  = f.input :address
-  = f.input :email
-  = f.input :birthday
-  = f.input :gender, collection: student_genders_for_select
-  = f.input :disability
-  %h3= t('.enrollments')
-  #enrollments
-    = f.simple_fields_for :enrollments do |enrollment|
-      = render 'enrollment_fields', f: enrollment
-    .links
-      = link_to_add_association t('.add_enrollment'), f, :enrollments
+  .container-fluid.border.rounded.pt-2.shadow-sm.bg-light
+    .container-fluid.py-2
+      = f.label :avatar
+      .div.my-2
+        - if @student.avatar.present?
+          = image_tag @student.avatar.edit_thumb.url
+      .div.mb-2= f.input_field :avatar
+    = f.input :name
+    = f.input :address
+    = f.input :email
+    = f.input :birthday
+    = f.input :gender, collection: student_genders_for_select
+    = f.input :disability
+  .container-fluid.border.rounded.my-4.py-4.shadow-sm.bg-light
+    %h3= t('.enrollments')
+    #enrollments.bg-white
+      = f.simple_fields_for :enrollments do |enrollment|
+        = render 'enrollment_fields', f: enrollment
+      .links.bg-light
+        = link_to_add_association t('.add_enrollment'), f, :enrollments
   = f.submit
