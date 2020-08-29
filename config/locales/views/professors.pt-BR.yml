@@ -18,5 +18,5 @@ pt-BR:
       create_new_professor: Cadastrar novo Professor
       <<: *infos
     professor_info:
-      professor_info_title: Informacões do Professor
+      professor_info_title: Informações do Professor
       professor_relations_info: Relações de informacões do Professor aqui
