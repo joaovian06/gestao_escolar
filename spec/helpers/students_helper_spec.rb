@@ -10,7 +10,7 @@ RSpec.describe StudentsHelper, type: :helper do
   describe 'students_for_select' do
     let(:expected) do
       Student.all.map do |student|
-        ["#{student.name}", student.id]
+        [student.name, student.id]
       end
     end
 

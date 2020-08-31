@@ -7,7 +7,7 @@ module StudentsHelper
 
   def students_for_select
     Student.all.map do |student|
-      ["#{student.name}", student.id]
+      [student.name, student.id]
     end
   end
 end
