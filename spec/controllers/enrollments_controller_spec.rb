@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe EnrollmentsController, type: :controller do
-  let(:permitted_params) { %i[registration_num student_id classroom_id] }
+  let(:permitted_params) { %i[student_id classroom_id] }
   let(:classroom) { create(:classroom) }
   let(:student) { create(:student) }
   let(:enrollment) { create(:enrollment) }
