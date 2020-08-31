@@ -21,7 +21,7 @@ pt-BR:
       classroom_info_title: Informações da turma
       classroom_relations_info: Relações de informações da turma aqui
       enrollments: Matrículas
-      enrollment_count: Alunos Matrículados
+      enrollment_count: "Alunos Matrículados: %{count}"
     form:
       enrollments: Matrículas da turma
       add_enrollment: Nova Matrícula
