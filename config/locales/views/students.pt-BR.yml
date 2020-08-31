@@ -21,7 +21,7 @@ pt-BR:
       enrollments: Matrículas
       no_enrollments_found: Nenhuma Matrícula Encontrada
       student_info_title: Informações do Estudante
-      enrollment_count: Turmas Matrículadas
+      enrollment_count: "Turmas Matrículadas: %{count}"
       student_relations_info: Relações de informacões do estudante aqui
     form:
       enrollments: Matrículas do Estudante
