@@ -5,24 +5,25 @@
   .row
     .col-xl-12
       - @enrollments.each do |enrollment|
-        .row.justify-content-center
-          .col-lg-7
-            .card.my-2.shadow
-              .row
-                .col-md-3
-                  .container-fluid.border.bg-light
-                    - if enrollment.student.avatar.present?
-                      .div.my-4= image_tag enrollment.student.avatar.index_thumb.url
-                    - else
-                      .fa.fa-user.fa-5x.my-5
-                .col-md-6
-                  .card-body
-                    %h4.card-title= enrollment.registration_num
-                    .card-text.mt-4
-                      .row
-                        .col= link_to enrollment.student.name, student_path(enrollment.student.id)
-                      .row
-                        .col= link_to "#{enrollment.classroom.name}/#{enrollment.classroom.year}", classroom_path(enrollment.classroom.id)
+        .container-lg.border.rounded.my-4.shadow.bg-white
+          .row.justify-content-center
+            .col-lg-12
+              .card.my-2.shadow-sm
+                .row
+                  .col-md-3
+                    .container-fluid.border.bg-light
+                      - if enrollment.student.avatar.present?
+                        .div.my-4= image_tag enrollment.student.avatar.index_thumb.url
+                      - else
+                        .fa.fa-user.fa-5x.my-5
+                  .col-md-6
+                    .card-body
+                      %h4.card-title= enrollment.registration_num
+                      .card-text.mt-4
+                        .row
+                          .col= link_to enrollment.student.name, student_path(enrollment.student.id)
+                        .row
+                          .col= link_to "#{enrollment.classroom.name}/#{enrollment.classroom.year}", classroom_path(enrollment.classroom.id)
 
       - if @enrollments.blank?
         %p t('.no_enrollments')
