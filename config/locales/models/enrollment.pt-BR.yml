@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models:
+      enrollment: Matrícula
+    attributes:
+      enrollment:
+        registration_num: Número da Matrícula
+        student_id: ID do Estudante
+        classroom_id: ID da Turma
+        student: Estudante
+        classroom: Turma

@@ -9,5 +9,15 @@
           .fa.fa-user.fa-5x.mx-auto
       .card-body
         %h5.card-title.text-center= @student.name
-        .container.border-top.mt-2.py-2
-          .card-text= t('.student_relations_info')
+        .container.border.rounded.mt-2.py-2.bg-light
+          - if @student.enrollments.present?
+            %h3= t('.enrollments')
+            #enrollments.container.border.rounded.bg-white
+              - @student.enrollments.each do |enrollment|
+                .row
+                  .col
+                    = link_to "#{enrollment.classroom.name}/#{enrollment.classroom.year}", classroom_path(enrollment.classroom)
+            #student-info.container.border.rounded.mt-5.bg-white
+              .text-muted= t('.enrollment_count', count: @student.enrollments.count)
+          - else
+            .card-text= t('.student_relations_info')

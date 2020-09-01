@@ -1,8 +1,18 @@
 .col-xl-3.d-flex.justify-content-center.my-4
   .container-fluid
-    .card.img-classroom
+    .card
       %h2.card-header.text-muted= t('.classroom_info_title')
       .card-body
         %h5.card-title.text-center= @classroom.name
-        .container.border-top.mt-2.py-2
-          .card-text= t('.classroom_relations_info')
+        .container.border.rounded.mt-2.py-2.bg-light
+          - if @classroom.enrollments.present?
+            %h3= t('.enrollments')
+            #enrollments.container.border.rounded.bg-white
+              - @classroom.enrollments.each do |enrollment|
+                .row
+                  .col
+                    = link_to "#{enrollment.student.name}", student_path(enrollment.student_id)
+            #classroom-info.container.mt-5.border.rounded.bg-white
+              .text-muted= t('.enrollment_count', count: @classroom.enrollments.count)
+          - else
+            .card-text= t('.classroom_relations_info')

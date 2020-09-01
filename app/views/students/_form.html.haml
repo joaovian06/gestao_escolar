@@ -10,4 +10,10 @@
   = f.input :birthday
   = f.input :gender, collection: student_genders_for_select
   = f.input :disability
+  %h3= t('.enrollments')
+  #enrollments
+    = f.simple_fields_for :enrollments do |enrollment|
+      = render 'enrollment_fields', f: enrollment
+    .links
+      = link_to_add_association t('.add_enrollment'), f, :enrollments
   = f.submit

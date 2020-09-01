@@ -4,7 +4,7 @@ pt-BR:
       students: Estudantes
       click_to_see_student_info_and_options: Clique para ver informações e opções do estudante
       see_details: Ver detalhes
-      no_students: Sem Estudantes
+      no_students: Nenhum Estudante
     show: &infos
       student_attributes_title: Atributos do Estudante
       edit: Editar
@@ -18,5 +18,13 @@ pt-BR:
       create_new_student: Cadastrar novo estudante
       <<: *infos
     student_info:
+      enrollments: Matrículas
+      no_enrollments_found: Nenhuma Matrícula Encontrada
       student_info_title: Informações do Estudante
+      enrollment_count: "Turmas Matrículadas: %{count}"
       student_relations_info: Relações de informacões do estudante aqui
+    form:
+      enrollments: Matrículas do Estudante
+      add_enrollment: Nova Matrícula
+    enrollment_fields:
+      remove_enrollment: Remover Matrícula

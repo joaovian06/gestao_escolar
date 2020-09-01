@@ -1,4 +1,7 @@
 class Classroom < ApplicationRecord
+  has_many :enrollments, inverse_of: :classroom
+  accepts_nested_attributes_for :enrollments, allow_destroy: true
+
   enum school_period: %i[morning afternoon night]
 
   validates :name,

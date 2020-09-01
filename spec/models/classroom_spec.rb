@@ -36,4 +36,9 @@ RSpec.describe Classroom, type: :model do
       it { is_expected.to validate_presence_of(:year) }
     end
   end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:enrollments).inverse_of(:classroom) }
+    it { is_expected.to accept_nested_attributes_for(:enrollments).allow_destroy(true) }
+  end
 end

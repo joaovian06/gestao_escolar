@@ -1,0 +1,7 @@
+pt-BR:
+  enrollments:
+    index:
+      enrollments: Matrículas
+      no_enrollments: Nenhuma Matrícula
+    new:
+      new_enrollment: Nova Matrícula

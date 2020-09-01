@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ClassroomsController, type: :controller do
-  let(:permitted_params) { %i[name school_period year] }
+  let(:permitted_params) { [:name, :school_period, :year, enrollments_attributes: [:id, :student_id ,:_destroy]] }
   let(:valid_params) { { id: classroom.id, classroom: classroom.attributes } }
   let(:classroom) { create(:classroom) }
 
