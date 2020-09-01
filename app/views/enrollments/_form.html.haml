@@ -1,4 +1,4 @@
 = simple_form_for @enrollment do |f|
   = f.association :student, collection: students_for_select
   = f.association :classroom, collection: classrooms_for_select
-  = link_to f.submit
+  = f.submit

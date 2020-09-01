@@ -14,13 +14,12 @@
         .container-lg.border.rounded.mt-2.py-2.bg-light.shadow-sm
           - if @student.enrollments.present?
             %h3= t('.enrollments')
-            #enrollments.container-fluid.border.rounded.bg-white.shadow-sm
-              - Enrollment.all.map do |enrollment|
-                - if enrollment.student_id == @student.id
-                  .row
-                    .col
-                      = link_to "#{enrollment.classroom.name}/#{enrollment.classroom.year}", classroom_path(enrollment.classroom)
+            #enrollments.container.border.rounded.bg-white.shadow-sm
+              - @student.enrollments.each do |enrollment|
+                .row
+                  .col
+                    = link_to "#{enrollment.classroom.name}/#{enrollment.classroom.year}", classroom_path(enrollment.classroom)
             #student-info.container-fluid.border.rounded.mt-5.bg-white.shadow-sm
-              .text-muted= "#{t('.enrollment_count')}: #{@student.enrollments.count}"
+              .text-muted= t('.enrollment_count', count: @student.enrollments.count)
           - else
             .card-text= t('.student_relations_info')

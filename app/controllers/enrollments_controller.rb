@@ -45,6 +45,6 @@ class EnrollmentsController < ApplicationController
   end
 
   def enrollments_params
-    params.require(:enrollment).permit(%i[registration_num student_id classroom_id])
+    params.require(:enrollment).permit(%i[student_id classroom_id])
   end
 end

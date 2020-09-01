@@ -8,12 +8,12 @@
           - if @classroom.enrollments.present?
             %h3= t('.enrollments')
             #enrollments.container-fluid.border.rounded.bg-white.shadow-sm
-              - Enrollment.all.map do |enrollment|
-                - if enrollment.classroom_id == @classroom.id
-                  .row
-                    .col
-                      = link_to "#{enrollment.student.name}", student_path(enrollment.student.id)
-            #classroom-info.container-fluid.mt-5.border.rounded.bg-white.shadow-sm
-              .text-muted= "#{t('.enrollment_count')}: #{@classroom.enrollments.count}"
+              - @classroom.enrollments.each do |enrollment|
+                .row
+                  .col
+                    = link_to "#{enrollment.student.name}", student_path(enrollment.student_id)
+            #classroom-info.container.mt-5.border.rounded.bg-white.shadow-sm
+              .text-muted= t('.enrollment_count', count: @classroom.enrollments.count)
+
           - else
             .card-text= t('.classroom_relations_info')

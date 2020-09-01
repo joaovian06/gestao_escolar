@@ -8,14 +8,11 @@ class Enrollment < ApplicationRecord
             :classroom,
             presence: true
 
-
   validates :student_id, uniqueness: { scope: :classroom_id }
 
   private
 
   def set_registration_num
-    self.registration_num = "#{Time.now.to_f}"
+    self.registration_num = Time.now.to_f.to_s
   end
 end
-
-
