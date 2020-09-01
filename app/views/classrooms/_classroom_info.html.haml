@@ -4,16 +4,16 @@
       %h2.card-header.text-muted.shadow-sm= t('.classroom_info_title')
       .card-body
         %h5.card-title.text-center= @classroom.name
-        .container.border.rounded.mt-2.py-2.bg-light.shadow-sm
+        .container-lg.border.rounded.mt-2.py-2.bg-light.shadow-sm
           - if @classroom.enrollments.present?
             %h3= t('.enrollments')
-            #enrollments.container.border.rounded.bg-white.shadow-sm
+            #enrollments.container-fluid.border.rounded.bg-white.shadow-sm
               - Enrollment.all.map do |enrollment|
                 - if enrollment.classroom_id == @classroom.id
                   .row
                     .col
                       = link_to "#{enrollment.student.name}", student_path(enrollment.student.id)
-            #classroom-info.container.mt-5.border.rounded.bg-white.shadow-sm
+            #classroom-info.container-fluid.mt-5.border.rounded.bg-white.shadow-sm
               .text-muted= "#{t('.enrollment_count')}: #{@classroom.enrollments.count}"
           - else
             .card-text= t('.classroom_relations_info')
