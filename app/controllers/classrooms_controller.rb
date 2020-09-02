@@ -21,7 +21,7 @@ class ClassroomsController < ApplicationController
     @classroom = Classroom.new(classrooms_params)
     if @classroom.save
       flash[:success] = t('.success')
-      redirect_to(classrooms_path)
+      redirect_to_index
     else
       flash[:error] = t('.error')
       render(:new)
@@ -31,7 +31,7 @@ class ClassroomsController < ApplicationController
   def update
     if @classroom.update(classrooms_params)
       flash[:success] = t('.success')
-      redirect_to(classrooms_path)
+      redirect_to_index
     else
       flash[:error] = t('.error')
       render(:edit)
@@ -45,13 +45,17 @@ class ClassroomsController < ApplicationController
     else
       flash[:error] = t('.error')
     end
-    redirect_to(classrooms_path)
+    redirect_to_index
   end
 
   private
 
+  def redirect_to_index
+    redirect_to(classrooms_path)
+  end
+
   def redirect_index_missing_classroom
-    redirect_to(classrooms_path) unless @classroom.present?
+    redirect_to_index unless @classroom.present?
   end
 
   def find_classroom
