@@ -24,6 +24,12 @@
                           .col= link_to enrollment.student.name, student_path(enrollment.student.id)
                         .row
                           .col= link_to "#{enrollment.classroom.name}/#{enrollment.classroom.year}", classroom_path(enrollment.classroom.id)
+                  .col-md-3
+                    %ul.nav.justify-content-end
+                      %li.nav-item
+                        %li.nav-link
+                          .button.btn.btn-danger= link_to t('.delete'), enrollment_path(enrollment), method: :delete,
+                        data: { confirm: t('.delete_data_confirm') }, class: 'text-white'
 
       - if @enrollments.blank?
         %p t('.no_enrollments')

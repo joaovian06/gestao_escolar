@@ -32,6 +32,16 @@ pt-BR:
     destroy:
       success: Professor excluído com sucesso.
       error: Não foi possivel excluir o professor.
+  enrollments:
+    create:
+      success: Matrícula criada com sucesso.
+      error: Não foi possivel criar o matrícula.
+    update:
+      success: Matrícula atualizada com sucesso.
+      error: Não foi possivel atualizar o matrícula.
+    destroy:
+      success: Matrícula excluída com sucesso.
+      error: Não foi possivel excluir a matrícula.
 
   activerecord:
     errors:

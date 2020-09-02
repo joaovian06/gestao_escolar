@@ -4,14 +4,6 @@ class EnrollmentsController < ApplicationController
     @enrollments = Enrollment.all
   end
 
-  def edit
-    if @enrollment.present?
-      render(:edit)
-    else
-      redirect_to(enrollments_path)
-    end
-  end
-
   def new
     @enrollment = Enrollment.new
   end
@@ -19,26 +11,29 @@ class EnrollmentsController < ApplicationController
   def create
     @enrollment = Enrollment.new(enrollments_params)
     if @enrollment.save
-      redirect_to(enrollments_path)
+      redirect_to_index
+      flash[:success] = t('.success')
     else
+      flash[:error] = t('.error')
       render(:new)
     end
   end
 
-  def update
-    if @enrollment.update(enrollments_params)
-      redirect_to(enrollments_path)
-    else
-      render(:edit)
-    end
-  end
-
   def destroy
-    @enrollment.destroy if @enrollment.present?
-    redirect_to(enrollments_path)
+    if @enrollment.present?
+      @enrollment.destroy
+      flash[:success] = t('.success')
+    else
+      flash[:error] = t('.error')
+    end
+    redirect_to_index
   end
 
   private
+
+  def redirect_to_index
+    redirect_to(enrollments_path)
+  end
 
   def find_enrollment
     @enrollment = Enrollment.find_by(id: params[:id])
