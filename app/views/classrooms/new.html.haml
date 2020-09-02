@@ -1,14 +1,10 @@
 = stylesheet_link_tag 'views/classrooms/edit'
 
-.container-fluid.my-4.bg-light
-  - if flash[:error]
-    .alert.alert-danger.text-center.my-4
-      = flash[:error]
-  .row
-    .col-xl-12.my-4
-      .container-fluid
-        .card.shadow
-          %h2.card-header.shadow-sm= t('.create_new_classroom')
-          .card-body.my-4
-            .container-fluid
-              = render 'form'
+.row
+  .col-xl-12.my-4
+    .container-fluid
+      .card.shadow
+        %h2.card-header.shadow-sm= t('.create_new_classroom')
+        .card-body.my-4
+          .container-fluid
+            = render 'form'
