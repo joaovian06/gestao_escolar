@@ -19,22 +19,43 @@ class ProfessorsController < ApplicationController
 
   def create
     @professor = Professor.new(professors_params)
-    @professor.save ? redirect_to(professors_path) : render(:new)
+    if @professor.save
+      redirect_to_index
+      flash[:success] = t('.success')
+    else
+      flash[:error] = t('.error')
+      render(:new)
+    end
   end
 
   def update
-    @professor.update(professors_params) ? redirect_to(professors_path) : render(:edit)
+    if @professor.update(professors_params)
+      redirect_to_index
+      flash[:success] = t('.success')
+    else
+      flash[:error] = t('.error')
+      render(:edit)
+    end
   end
 
   def destroy
-    @professor.destroy if @professor.present?
-    redirect_index_missing_professor
+    if @professor.present?
+      @professor.destroy
+      flash[:success] = t('.success')
+    else
+      flash[:error] = t('.error')
+    end
+    redirect_to_index
   end
 
   private
 
+  def redirect_to_index
+    redirect_to(professors_path)
+  end
+
   def redirect_index_missing_professor
-    redirect_to(professors_path) unless @professor.present?
+    redirect_to_index unless @professor.present?
   end
 
   def find_professor

@@ -1,11 +1,10 @@
 = stylesheet_link_tag 'views/professors/edit'
 
-.container-fluid.my-4.bg-light
-  .row
-    .col-xl-12.my-4
-      .container-fluid
-        .card.shadow
-          %h2.card-header.shadow-sm= t('.create_new_professor')
-          .card-body.my-4
-            .container-fluid
-              = render 'form'
+.row
+  .col-xl-12.my-4
+    .container-fluid
+      .card.shadow
+        %h2.card-header.shadow-sm= t('.create_new_professor')
+        .card-body.my-4
+          .container-fluid
+            = render 'form'

@@ -1,26 +1,25 @@
 = stylesheet_link_tag 'views/professors/index'
 
-.container-fluid.text-center.bg-light
-  .row.pt-4
-    .col-xl-12.my-4
-      %h1= t('.professors')
-  .row
-    .col-xl-12
-      - @professors.each do |professor|
-        .container-fluid.border.rounded.shadow.my-4.w-75.bg-white
-          .row
-            .col-lg-2
-              .card.mt-2.mb-2.img-user-card.shadow-sm
-                .card-img-top.d-flex.flex-column.my-auto.bg-light
-                  .fa.fa-user.fa-5x.mx-auto
+.row.pt-4
+  .col-xl-12.my-4.text-center
+    %h1= t('.professors')
+.row
+  .col-xl-12
+    - @professors.each do |professor|
+      .container-fluid.border.rounded.shadow.my-4.w-75.bg-white
+        .row
+          .col-lg-2
+            .card.mt-2.mb-2.img-user-card.shadow-sm
+              .card-img-top.d-flex.flex-column.my-auto.bg-light
+                .fa.fa-user.fa-5x.mx-auto
 
-            .col-xl-10
-              .card.mt-2.mb-2.bg-light
-                .card-body.shadow-sm
-                  %h4.card-title.mb-auto= professor.name
-                  .card-text.mb-auto= professor.cellphone
-                  .button.btn.btn-dark.mt-2.shadow{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_professor_info_and_options') } }
-                    = link_to t('.see_details'), professor_path(professor), class: 'details-button'
+          .col-xl-10
+            .card.mt-2.mb-2.bg-light.text-center
+              .card-body.shadow-sm
+                %h4.card-title.mb-auto= professor.name
+                .card-text.mb-auto= professor.cellphone
+                .button.btn.btn-dark.mt-2.shadow{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_professor_info_and_options') } }
+                  = link_to t('.see_details'), professor_path(professor), class: 'details-button'
 
-      - if @professors.blank?
-        %p t('.no_professors')
+    - if @professors.blank?
+      %p t('.no_professors')

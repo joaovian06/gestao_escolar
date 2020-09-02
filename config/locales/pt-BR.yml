@@ -22,6 +22,16 @@ pt-BR:
     destroy:
       success: Estudante excluído com sucesso.
       error:  Não foi possível excluir o estudante.
+  professors:
+    create:
+      success: Professor criado com sucesso.
+      error: Não foi possivel criar o professor.
+    update:
+      success: Professor atualizado com sucesso.
+      error: Não foi possivel atualizar o professor.
+    destroy:
+      success: Professor excluído com sucesso.
+      error: Não foi possivel excluir o professor.
 
   activerecord:
     errors:
