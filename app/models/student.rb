@@ -2,7 +2,7 @@
 
 # classe model estudante
 class Student < ApplicationRecord
-  has_many :enrollments, inverse_of: :student
+  has_many :enrollments, inverse_of: :student, dependent: :destroy
   accepts_nested_attributes_for :enrollments, allow_destroy: true
 
   mount_uploader :avatar, AvatarUploader

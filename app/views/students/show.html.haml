@@ -1,50 +1,49 @@
 = stylesheet_link_tag 'views/students/show'
 
-.container-fluid.my-4.bg-light
-  .row
-    = render 'student_info'
+.row
+  = render 'student_info'
 
-    .col-xl-9.my-4
-      .container-fluid
-        .card.student-attributes-content.shadow
-          .card-header.shadow-sm
-            .row
-              .col.h2= t('.student_attributes_title')
-              .col
-                %ul.nav.justify-content-end
-                  %li.nav-item
-                    %li.nav-link
-                      = link_to t('.edit'), edit_student_path(@student)
-                  %li.nav-item
-                    %li.nav-link
-                      = link_to t('.delete'), student_path(@student),
-                          method: :delete,
-                            data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
-          .card-body.my-4
-            .container-fluid
-              .table.border.rounded.shadow-sm.bg-light
-                .tbody
-                  %tr
-                    .row.p-2.m-0.border-bottom
-                      .col= Student.human_attribute_name(:name)
-                      .col= @student.name
-                  %tr
-                    .row.p-2.m-0.border-bottom
-                      .col= Student.human_attribute_name(:address)
-                      .col= @student.address
-                  %tr
-                    .row.p-2.m-0.border-bottom
-                      .col= Student.human_attribute_name(:email)
-                      .col= @student.email
-                  %tr
-                    .row.p-2.m-0.border-bottom
-                      .col= Student.human_attribute_name(:birthday)
-                      .col= l(@student.birthday)
-                  %tr
-                    .row.p-2.m-0.border-bottom
-                      .col= Student.human_attribute_name(:gender)
-                      .col= Student.human_attribute_name("gender.#{@student.gender}")
-                  %tr
-                    .row.p-2.m-0.border-bottom
-                      .col= Student.human_attribute_name(:disability)
-                      .col= t("boolean.#{@student.disability}")
+  .col-xl-9.my-4
+    .container-fluid
+      .card.student-attributes-content.shadow
+        .card-header.shadow-sm
+          .row
+            .col.h2= t('.student_attributes_title')
+            .col
+              %ul.nav.justify-content-end
+                %li.nav-item
+                  %li.nav-link
+                    = link_to t('.edit'), edit_student_path(@student)
+                %li.nav-item
+                  %li.nav-link
+                    = link_to t('.delete'), student_path(@student),
+                        method: :delete,
+                          data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
+        .card-body.my-4
+          .container-fluid
+            .table.border.rounded.shadow-sm.bg-light
+              .tbody
+                %tr
+                  .row.p-2.m-0.border-bottom
+                    .col= Student.human_attribute_name(:name)
+                    .col= @student.name
+                %tr
+                  .row.p-2.m-0.border-bottom
+                    .col= Student.human_attribute_name(:address)
+                    .col= @student.address
+                %tr
+                  .row.p-2.m-0.border-bottom
+                    .col= Student.human_attribute_name(:email)
+                    .col= @student.email
+                %tr
+                  .row.p-2.m-0.border-bottom
+                    .col= Student.human_attribute_name(:birthday)
+                    .col= l(@student.birthday)
+                %tr
+                  .row.p-2.m-0.border-bottom
+                    .col= Student.human_attribute_name(:gender)
+                    .col= Student.human_attribute_name("gender.#{@student.gender}")
+                %tr
+                  .row.p-2.m-0.border-bottom
+                    .col= Student.human_attribute_name(:disability)
+                    .col= t("boolean.#{@student.disability}")

@@ -1,24 +1,23 @@
 = stylesheet_link_tag 'views/students/edit'
 
-.container-fluid.my-4.bg-light
-  .row
-    .col-xl-12.my-4
-      .container-fluid
-        .card.shadow
-          .card-header.shadow-sm
-            .row
-              .col.h2= t('.edit_student_attributes_title')
-              .col
-                %ul.nav.justify-content-end
-                  %li.nav-item
-                    %li.nav-link
-                      = link_to t('.back'), student_path(@student)
-                  %li.nav-item
-                    %li.nav-link
-                      = link_to t('.delete'), student_path(@student),
-                    method: :delete,
-                      data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
-          .card-body.my-auto
-            .container-fluid
-              = render 'form'
+.row
+  .col-xl-12.my-4
+    .container-fluid
+      .card.shadow
+        .card-header.shadow-sm
+          .row
+            .col.h2= t('.edit_student_attributes_title')
+            .col
+              %ul.nav.justify-content-end
+                %li.nav-item
+                  %li.nav-link
+                    = link_to t('.back'), student_path(@student)
+                %li.nav-item
+                  %li.nav-link
+                    = link_to t('.delete'), student_path(@student),
+                  method: :delete,
+                    data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
+        .card-body.my-auto
+          .container-fluid
+            = render 'form'
 

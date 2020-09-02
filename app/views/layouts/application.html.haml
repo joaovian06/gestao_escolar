@@ -11,4 +11,7 @@
 
   %body.bg-light
     = render 'shared/shared_header'
-    = yield
+
+    .container-fluid.bg-light.my-4
+      = render 'shared/alert'
+      = yield

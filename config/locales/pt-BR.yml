@@ -12,6 +12,16 @@ pt-BR:
     destroy:
       success: Turma excluída com sucesso.
       error: Não foi possivel excluir a turma.
+  students:
+    create:
+      success: Estudante criado com sucesso.
+      error:  Não foi possível criar o estudante.
+    update:
+      success: Estudante atualizado com sucesso.
+      error:  Não foi possível atualizar o estudante.
+    destroy:
+      success: Estudante excluído com sucesso.
+      error:  Não foi possível excluir o estudante.
 
   activerecord:
     errors:

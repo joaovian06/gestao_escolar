@@ -19,22 +19,43 @@ class StudentsController < ApplicationController
 
   def create
     @student = Student.new(students_params)
-    @student.save ? redirect_to(students_path) : render(:new)
+    if @student.save
+      redirect_to_index
+      flash[:success] = t('.success')
+    else
+      flash[:error] = t('.error')
+      render(:new)
+    end
   end
 
   def update
-    @student.update(students_params) ? redirect_to(students_path) : render(:edit)
+    if @student.update(students_params)
+      flash[:success] = t('.success')
+      redirect_to_index
+    else
+      flash[:error] = t('.error')
+      render(:edit)
+    end
   end
 
   def destroy
-    @student.destroy if @student.present?
-    redirect_index_missing_student
+    if @student.present?
+      @student.destroy
+      flash[:success] = t('.success')
+    else
+      flash[:error] = t('.error')
+    end
+    redirect_to_index
   end
 
   private
 
+  def redirect_to_index
+    redirect_to(students_path)
+  end
+
   def redirect_index_missing_student
-    redirect_to students_path unless @student.present?
+    redirect_to_index unless @student.present?
   end
 
   def find_student

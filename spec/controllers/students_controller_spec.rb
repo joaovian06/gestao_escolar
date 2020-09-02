@@ -66,6 +66,10 @@ RSpec.describe StudentsController, type: :controller do
 
       it { is_expected.to permit(*permitted_params).for(:create, params: valid_params).on(:student) }
       it { expect { post :create, params: valid_params }.to change(Student, :count).by(1) }
+      it do
+        post :create, params: valid_params
+        expect(controller).to set_flash[:success]
+      end
 
       context 'redirects' do
         before { post :create, params: valid_params }
@@ -79,6 +83,7 @@ RSpec.describe StudentsController, type: :controller do
       let(:invalid_params) { { student: student.attributes } }
       before { post :create, params: invalid_params }
 
+      it { expect(controller).to set_flash[:error] }
       it { expect(response).to render_template(:new) }
     end
   end
@@ -92,6 +97,7 @@ RSpec.describe StudentsController, type: :controller do
       let(:valid_params) { { id: student.id, student: student.attributes } }
       before { patch :update, params: { id: student.id, student: { name: updated_name } } }
 
+      it { expect(controller).to set_flash[:success] }
       it { is_expected.to permit(*permitted_params).for(:update, params: valid_params).on(:student) }
 
       it do
@@ -106,6 +112,7 @@ RSpec.describe StudentsController, type: :controller do
       let(:student) { create(:student, name: default_student_name) }
       before { patch :update, params: { id: student.id, student: { name: updated_name, address: '' } } }
 
+      it { expect(controller).to set_flash[:error] }
       it { expect(response).to render_template(:edit) }
     end
   end
@@ -114,12 +121,24 @@ RSpec.describe StudentsController, type: :controller do
     let!(:student) { create(:student) }
 
     context 'valid id' do
-      it { expect { delete :destroy, params: { id: student.id } }.to change(Student, :count).by(-1) }
+      context 'set flash and redirect' do
+        before { delete :destroy, params: { id: student.id } }
+
+        it { expect(controller).to set_flash[:success] }
+        it { expect(response).to redirect_to(students_path) }
+      end
+
+      it do
+        expect do
+          delete :destroy, params: { id: student.id }
+        end.to change(Student, :count).by(-1)
+      end
     end
 
     context 'invalid id' do
       before { delete :destroy, params: { id: 0 } }
 
+      it { expect(controller).to set_flash[:error] }
       it { expect(response).to redirect_to(students_path) }
     end
   end
