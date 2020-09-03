@@ -6,10 +6,38 @@ RSpec.describe ProfessorsController, type: :controller do
   let(:professor) { create(:professor) }
 
   describe '#index' do
-    let(:professors) { create_list(:professor, 10) }
-    before { get :index }
+    context 'all professors' do
+      let(:professors) { create_list(:professor, 10) }
+      before { get :index }
 
-    it { expect(assigns[:professors]).to match_array(professors) }
+      it { expect(assigns[:professors]).to match_array(professors) }
+    end
+
+    describe 'paginate' do
+      let!(:professors) { create_list(:professor, 11) }
+
+      context 'param page present' do
+        before { get :index, params: { page: 2 } }
+
+        it { expect(assigns[:professors].length).to eq(1) }
+      end
+
+      context 'param page not present' do
+        before { get :index }
+
+        it { expect(assigns[:professors].length).to eq(10) }
+      end
+    end
+
+    describe 'ordenate' do
+      let!(:professor1) { create(:professor, created_at: DateTime.new(2020, 9, 20, 10, 0, 0)) }
+      let!(:professor2) { create(:professor, created_at: DateTime.new(2020, 9, 19, 10, 0, 0)) }
+      let!(:professor3) { create(:professor, created_at: DateTime.new(2020, 9, 21, 10, 0, 0)) }
+
+      before { get :index }
+
+      it { expect(assigns[:professors]).to eq([professor3, professor1, professor2]) }
+    end
   end
 
   describe '#new' do
