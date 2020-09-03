@@ -1,7 +1,9 @@
 class EnrollmentsController < ApplicationController
   before_action :find_enrollment, only: %i[edit update destroy]
+  PER_PAGE = 10
+
   def index
-    @enrollments = Enrollment.all
+    @enrollments = Enrollment.order(created_at: :desc).page(param_page).per(PER_PAGE)
   end
 
   def new
@@ -30,6 +32,10 @@ class EnrollmentsController < ApplicationController
   end
 
   private
+
+  def param_page
+    params[:page] || 1
+  end
 
   def redirect_to_index
     redirect_to(enrollments_path)

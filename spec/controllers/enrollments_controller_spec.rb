@@ -8,11 +8,39 @@ RSpec.describe EnrollmentsController, type: :controller do
   let(:valid_params) { { id: enrollment.id, enrollment: enrollment.attributes } }
 
   describe '#index' do
-    let!(:enrollments) { create_list(:enrollment, 10) }
-    before { get :index }
+    context 'all enrollments' do
+      let!(:enrollments) { create_list(:enrollment, 10) }
+      before { get :index }
 
-    it { expect(response).to render_template(:index) }
-    it { expect(assigns[:enrollments]).to eq(enrollments) }
+      it { expect(response).to render_template(:index) }
+      it { expect(assigns[:enrollments]).to eq(enrollments) }
+    end
+
+    describe 'paginate' do
+      let!(:enrollments) { create_list(:enrollment, 11) }
+
+      context 'param page not present' do
+        before { get :index, params: { page: 2 } }
+
+        it { expect(assigns[:enrollments].length).to eq(1) }
+      end
+
+      context 'param page not present' do
+        before { get :index }
+
+        it { expect(assigns[:enrollments].length).to eq(10) }
+      end
+    end
+
+    describe 'ordenate' do
+      let!(:enrollment1) { create(:enrollment, created_at: DateTime.new(2020, 9, 20, 10, 0, 0)) }
+      let!(:enrollment2) { create(:enrollment, created_at: DateTime.new(2020, 9, 19, 10, 0, 0)) }
+      let!(:enrollment3) { create(:enrollment, created_at: DateTime.new(2020, 9, 21, 10, 0, 0)) }
+
+      before { get :index }
+
+      it { expect(assigns[:enrollments]).to eq([enrollment3, enrollment1, enrollment2]) }
+    end
   end
 
   describe '#new' do
