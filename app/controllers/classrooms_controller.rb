@@ -1,8 +1,9 @@
 class ClassroomsController < ApplicationController
   before_action :find_classroom, only: %i[edit show update destroy]
+  PER_PAGE = 10
 
   def index
-    @classrooms = Classroom.all
+    @classrooms = Classroom.order(created_at: :desc).page(param_page).per(PER_PAGE)
   end
 
   def edit
@@ -49,6 +50,10 @@ class ClassroomsController < ApplicationController
   end
 
   private
+
+  def param_page
+    params[:page] || 1
+  end
 
   def redirect_to_index
     redirect_to(classrooms_path)

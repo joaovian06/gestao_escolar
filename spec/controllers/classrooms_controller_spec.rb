@@ -6,10 +6,38 @@ RSpec.describe ClassroomsController, type: :controller do
   let(:classroom) { create(:classroom) }
 
   describe '#index' do
-    let!(:classes) { create_list(:classroom, 2) }
-    before { get :index }
+    context 'all classrooms' do
+      let!(:classes) { create_list(:classroom, 2) }
+      before { get :index }
 
-    it { expect(assigns[:classrooms]).to eq(classes) }
+      it { expect(assigns[:classrooms]).to eq(classes) }
+    end
+
+    describe 'paginate' do
+      let!(:classrooms) { create_list(:classroom, 11) }
+
+      context 'param page present' do
+        before { get :index, params: { page: 2 } }
+
+        it { expect(assigns[:classrooms].length).to eq(1) }
+      end
+
+      context 'param page not present' do
+        before { get :index }
+
+        it { expect(assigns[:classrooms].length).to eq(10) }
+      end
+    end
+
+    describe 'ordenate' do
+      let!(:class1) { create(:classroom, created_at: DateTime.new(2020, 9, 20, 10, 0, 0)) }
+      let!(:class2) { create(:classroom, created_at: DateTime.new(2020, 9, 19, 10, 0, 0)) }
+      let!(:class3) { create(:classroom, created_at: DateTime.new(2020, 9, 21, 10, 0, 0)) }
+
+      before { get :index }
+
+      it { expect(assigns[:classrooms]).to eq([class3, class1, class2]) }
+    end
   end
 
   describe '#new' do
