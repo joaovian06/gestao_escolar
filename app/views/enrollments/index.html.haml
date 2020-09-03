@@ -34,6 +34,5 @@
       - if @enrollments.blank?
         %p t('.no_enrollments')
 
-.container-fluid.my-4.text-center
-  = paginate @enrollments, theme: 'twitter-bootstrap-4',                       pagination_class: 'pagination-md',
-                           nav_class: 'd-inline-flex'
+
+= paginate @enrollments

@@ -22,8 +22,5 @@
                   = link_to t('.see_details'), professor_path(professor), class: 'details-button'
 
     - if @professors.blank?
-      %p t('.no_professors')
-.container-fluid.my-4.text-center
-  = paginate @professors, theme: 'twitter-bootstrap-4',
-                          pagination: 'pagination-md',
-                          nav_class: 'd-inline-flex'
+      %p= t('.no_professors')
+= paginate @professors

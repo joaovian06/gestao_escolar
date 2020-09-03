@@ -26,8 +26,4 @@
 
     - if @students.blank?
       %p t(.'no_students')
-
-.container-fluid.my-4.text-center
-  = paginate @students, theme: 'twitter-bootstrap-4',
-                        pagination_class: 'pagination-md',
-                        nav_class: 'd-inline-flex'
+= paginate @students
