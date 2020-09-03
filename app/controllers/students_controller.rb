@@ -1,8 +1,9 @@
 class StudentsController < ApplicationController
   before_action :find_student, only: %i[edit show update destroy]
+  PER_PAGE = 10
 
   def index
-    @students = Student.all
+    @students = Student.order(created_at: :desc).page(param_page).per(PER_PAGE)
   end
 
   def new
@@ -49,6 +50,10 @@ class StudentsController < ApplicationController
   end
 
   private
+
+  def param_page
+    params[:page] || 1
+  end
 
   def redirect_to_index
     redirect_to(students_path)

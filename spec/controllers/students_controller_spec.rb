@@ -6,10 +6,38 @@ RSpec.describe StudentsController, type: :controller do
   let(:valid_params) { { student: student.attributes } }
 
   describe '#index' do
-    let!(:students) { create_list(:student, 10) }
-    before { get :index }
+    context 'return all students' do
+      let!(:students) { create_list(:student, 10) }
+      before { get :index }
 
-    it { expect(assigns[:students]).to match_array(students) }
+      it { expect(assigns[:students]).to match_array(students) }
+    end
+
+    describe 'paginate' do
+      let!(:students) { create_list(:student, 11) }
+
+      context 'param page present' do
+        before { get :index, params: { page: 2 } }
+
+        it { expect(assigns[:students].length).to eq(1) }
+      end
+
+      context 'param page not present' do
+        before { get :index }
+
+        it { expect(assigns[:students].length).to eq(10) }
+      end
+    end
+
+    describe 'ordenate' do
+      let!(:student1) { create(:student, created_at: DateTime.new(2020, 9, 17, 10, 23, 19)) }
+      let!(:student2) { create(:student, created_at: DateTime.new(2020, 9, 20, 10, 23, 19)) }
+      let!(:student3) { create(:student, created_at: DateTime.new(2020, 9, 3, 10, 23, 19)) }
+
+      before { get :index }
+
+      it { expect(assigns[:students]).to eq([student2, student1, student3]) }
+    end
   end
 
   describe '#new' do
