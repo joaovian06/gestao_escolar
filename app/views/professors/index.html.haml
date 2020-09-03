@@ -23,3 +23,7 @@
 
     - if @professors.blank?
       %p t('.no_professors')
+.container-fluid.my-4.text-center
+  = paginate @professors, theme: 'twitter-bootstrap-4',
+                          pagination: 'pagination-md',
+                          nav_class: 'd-inline-flex'
