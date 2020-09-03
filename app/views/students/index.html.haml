@@ -1,6 +1,5 @@
 = stylesheet_link_tag 'views/students/index'
 
-
 .row.pt-4.text-center
   .col-xl-12.my-4
     %h1= t('.students')
@@ -27,3 +26,8 @@
 
     - if @students.blank?
       %p t(.'no_students')
+
+.container-fluid.my-4.text-center
+  = paginate @students, theme: 'twitter-bootstrap-4',
+                        pagination_class: 'pagination-md',
+                        nav_class: 'd-inline-flex'
