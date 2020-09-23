@@ -1,0 +1,9 @@
+pt-BR:
+  enrollments:
+    index:
+      enrollments: Matrículas
+      no_enrollments: Nenhuma Matrícula
+      delete: Deletar
+      delete_data_confirm: Você tem certeza?
+    new:
+      new_enrollment: Nova Matrícula

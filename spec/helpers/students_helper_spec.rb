@@ -1,15 +1,21 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the StudentsHelper. For example:
-#
-# describe StudentsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe StudentsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'student_genders_for_select' do
+    it 'translate and set gender' do
+      expect(helper.student_genders_for_select).to eq(Student.genders.map { |k, v| [Student.human_attribute_name("gender.#{k}"), k] })
+    end
+  end
+
+  describe 'students_for_select' do
+    let(:expected) do
+      Student.all.map do |student|
+        [student.name, student.id]
+      end
+    end
+
+    before { create_list(:student, 3) }
+
+    it { expect(students_for_select).to eq(expected) }
+  end
 end

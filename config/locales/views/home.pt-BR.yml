@@ -1,0 +1,11 @@
+pt-BR:
+  home:
+    index:
+      students: Estudantes
+      professors: Professores
+      classrooms: Turmas
+      enrollments: Matrículas
+      students_info: Listagem de estudantes, acesse para alterar, visualizar ou cadastrar um estudante.
+      professors_info: Listagem de professores, acesse para alterar, visualizar ou cadastrar um professor.
+      classrooms_info: Listagem de turmas, acesse para alterar, visualizar ou cadastrar uma turma.
+      enrollments_info: Listagem de matrículas, acesse para visualizar ou cadastrar uma matrícula.

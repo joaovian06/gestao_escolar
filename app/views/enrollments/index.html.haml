@@ -1,0 +1,38 @@
+.container-fluid.text-center.bg-light
+  .row.pt-4
+    .col-xl-12.my-4
+      %h1= t('.enrollments')
+  .row
+    .col-xl-12
+      - @enrollments.each do |enrollment|
+        .container-lg.border.rounded.my-4.shadow.bg-white
+          .row.justify-content-center
+            .col-lg-12
+              .card.my-2.shadow-sm
+                .row
+                  .col-md-3
+                    .container-fluid.border.bg-light
+                      - if enrollment.student.avatar.present?
+                        .div.my-4= image_tag enrollment.student.avatar.index_thumb.url
+                      - else
+                        .fa.fa-user.fa-5x.my-5
+                  .col-md-6
+                    .card-body
+                      %h4.card-title= enrollment.registration_num
+                      .card-text.mt-4
+                        .row
+                          .col= link_to enrollment.student.name, student_path(enrollment.student.id)
+                        .row
+                          .col= link_to "#{enrollment.classroom.name}/#{enrollment.classroom.year}", classroom_path(enrollment.classroom.id)
+                  .col-md-3
+                    %ul.nav.justify-content-end
+                      %li.nav-item
+                        %li.nav-link
+                          .button.btn.btn-danger= link_to t('.delete'), enrollment_path(enrollment), method: :delete,
+                        data: { confirm: t('.delete_data_confirm') }, class: 'text-white'
+
+      - if @enrollments.blank?
+        %p t('.no_enrollments')
+
+
+= paginate @enrollments

@@ -3,6 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'bootstrap4-kaminari-views'
+gem 'kaminari'
+
+gem 'carrierwave', '~> 2.0'
+
 gem 'bootstrap', '~> 4.5.0'
 
 gem 'jquery-rails'
@@ -18,6 +23,7 @@ gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'cocoon'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -45,6 +51,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :test do
   gem 'shoulda-matchers', '~> 4.0'
+  gem 'rspec-collection_matchers'
 end
 
 group :development, :test do

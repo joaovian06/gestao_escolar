@@ -1,0 +1,22 @@
+= stylesheet_link_tag 'views/classrooms/index'
+
+.row.pt-4
+  .col-xl-12.my-4.text-center
+    %h1= t('.classrooms')
+.row
+  .col-xl-12
+    - @classrooms.each do |classroom|
+      .container-lg.border.rounded.shadow.my-4.bg-white
+        .row.justify-content-center
+          .col-xl-12
+            .card.text-center.mt-2.mb-2.classroom-content.bg-light.shadow-sm
+              .card-body
+                %h4.card-title.mb-auto= classroom.name
+                .card-text.mb-auto= classroom.year
+                .button.btn.btn-dark.shadow.mt-2{ data: { toggle:'tooltip', placement: 'top', title: t('.click_to_see_classroom_info_and_options') } }
+                  = link_to t('.see_details'), classroom_path(classroom), class: 'details-button'
+
+    - if @classrooms.blank?
+      %p t('.no_classrooms')
+
+= paginate @classrooms

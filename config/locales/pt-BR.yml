@@ -1,4 +1,48 @@
 pt-BR:
+  layouts:
+    application:
+      school_management: Gestão Escolar
+  classrooms:
+    create:
+      success: Turma Criada com sucesso.
+      error: Não foi possivel criar Turma.
+    update:
+      success: Turma atualizada com sucesso.
+      error: Não foi possivel atualizar a turma.
+    destroy:
+      success: Turma excluída com sucesso.
+      error: Não foi possivel excluir a turma.
+  students:
+    create:
+      success: Estudante criado com sucesso.
+      error:  Não foi possível criar o estudante.
+    update:
+      success: Estudante atualizado com sucesso.
+      error:  Não foi possível atualizar o estudante.
+    destroy:
+      success: Estudante excluído com sucesso.
+      error:  Não foi possível excluir o estudante.
+  professors:
+    create:
+      success: Professor criado com sucesso.
+      error: Não foi possivel criar o professor.
+    update:
+      success: Professor atualizado com sucesso.
+      error: Não foi possivel atualizar o professor.
+    destroy:
+      success: Professor excluído com sucesso.
+      error: Não foi possivel excluir o professor.
+  enrollments:
+    create:
+      success: Matrícula criada com sucesso.
+      error: Não foi possivel criar o matrícula.
+    update:
+      success: Matrícula atualizada com sucesso.
+      error: Não foi possivel atualizar o matrícula.
+    destroy:
+      success: Matrícula excluída com sucesso.
+      error: Não foi possivel excluir a matrícula.
+
   activerecord:
     errors:
       messages:

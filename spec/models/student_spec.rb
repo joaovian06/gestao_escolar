@@ -38,4 +38,13 @@ RSpec.describe Student, type: :model do
       end
     end
   end
+
+  describe 'mounts' do
+    it { expect(student.avatar).to be_a(AvatarUploader) }
+  end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:enrollments).inverse_of(:student).dependent(:destroy) }
+    it { is_expected.to accept_nested_attributes_for(:enrollments).allow_destroy(true) }
+  end
 end

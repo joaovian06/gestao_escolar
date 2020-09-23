@@ -1,6 +1,6 @@
-.container-fluid.border
-  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
-    = link_to students_path, class: 'navbar-brand' do
+.container-fluid.px-0
+  %nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.shadow-lg
+    = link_to root_path, class: 'navbar-brand' do
       .fa.fa-graduation-cap.fa-2x
     %button.navbar-toggler{ type: 'button', data: { toggle: 'collapse', target: '#navbarSupportedContent' }, 'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' }
       %span.navbar-toggler-icon
@@ -11,6 +11,13 @@
         %li.nav-item
           = link_to t('.professors'), professors_path, class: 'nav-link'
         %li.nav-item
-          = link_to t('.new_student'), new_student_url, class: 'nav-link'
+          = link_to t('.classrooms'), classrooms_path, class: 'nav-link'
         %li.nav-item
-          = link_to t('.new_professor'), new_professor_url, class: 'nav-link'
+          = link_to t('.enrollments'), enrollments_path, class: 'nav-link'
+        %li.nav-item.dropdown
+          %a.nav-link.dropdown-toggle{"aria-expande": "false", "aria-haspopup": "true", "data-toggle": "dropdown", href: "#", role: "button"}= t('.register')
+          .dropdown-menu
+            = link_to t('.new_student'), new_student_url, class: 'nav-link text-dark'
+            = link_to t('.new_professor'), new_professor_url, class: 'nav-link text-dark'
+            = link_to t('.new_classroom'), new_classroom_url, class: 'nav-link text-dark'
+            = link_to t('.new_enrollment'), new_enrollment_url, class: 'nav-link text-dark'

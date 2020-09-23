@@ -1,20 +1,10 @@
 = stylesheet_link_tag 'views/professors/edit'
 
-.container-fluid.my-4
-  .row
-    .col-xl-3.d-flex.justify-content-center.my-4
-      .container-fluid
-        .card.img-professor
-          %h2.card-header.text-muted= t('.professor_info_title')
-          .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
-            .fa.fa-user.fa-5x.mx-auto
-          .card-body
-            .container-fluid.border-top.mt-2.py-2
-              .card-text= t('.professor_relations_info')
-    .col-xl-9.my-4
-      .container-fluid
-        .card
-          %h2.card-header= t('.create_new_professor')
-          .card-body.my-4
-            .container-fluid
-              = render 'form'
+.row
+  .col-xl-12.my-4
+    .container-fluid
+      .card.shadow
+        %h2.card-header.shadow-sm= t('.create_new_professor')
+        .card-body.my-4
+          .container-fluid
+            = render 'form'

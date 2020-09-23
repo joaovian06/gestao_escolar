@@ -2,14 +2,14 @@ pt-BR:
   professors:
     index:
       professors: Professores
+      click_to_see_professor_info_and_options: Clique para ver informações e opções do Professor
       see_details: Ver detalhes
+      no_professors: Nenhum Professores
     show: &infos
-      professor_info_title: Informacões do Professor
       professor_attributes_title: Atributos do Professor
       edit: Editar
       delete: Deletar
       delete_data_confirm: Você tem certeza?
-      professor_relations_info: Relações de informacões do Professor aqui
     edit:
       edit_professor_attributes_title: Editar Atributos do Professor
       back: Voltar
@@ -17,3 +17,6 @@ pt-BR:
     new:
       create_new_professor: Cadastrar novo Professor
       <<: *infos
+    professor_info:
+      professor_info_title: Informações do Professor
+      professor_relations_info: Relações de informacões do Professor aqui

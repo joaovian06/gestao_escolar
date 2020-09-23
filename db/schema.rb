@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_122154) do
+ActiveRecord::Schema.define(version: 2020_08_20_150626) do
+
+  create_table "classrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "school_period"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "year"
+  end
+
+  create_table "enrollments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "registration_num"
+    t.bigint "student_id"
+    t.bigint "classroom_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["classroom_id"], name: "index_enrollments_on_classroom_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
+  end
 
   create_table "professors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -28,6 +46,9 @@ ActiveRecord::Schema.define(version: 2020_08_05_122154) do
     t.boolean "disability"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
+  add_foreign_key "enrollments", "classrooms"
+  add_foreign_key "enrollments", "students"
 end

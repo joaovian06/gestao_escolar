@@ -1,43 +1,33 @@
 = stylesheet_link_tag 'views/professors/show'
 
-.container-fluid.my-4
-  .row
-    .col-xl-3.d-flex.justify-content-center.my-4
-      .container-fluid
-        .card.img-professor
-          %h2.card-header.text-muted= t('.professor_info_title')
-          .card-img-top.d-flex.flex-column.align-self-center.my-4.border.rounded-circle
-            .fa.fa-user.fa-5x.mx-auto
-          .card-body
-            %h5.card-title.text-center= @professor.name
-            .container.border-top.mt-2.py-2
-              .card-text= t('.professor_relations_info')
+.row
+  = render 'professor_info'
 
-    .col-xl-9.my-4
-      .container-fluid
-        .card.professor-attributes-content
-          .card-header
-            .row
-              .col.h2= t('.professor_attributes_title')
-              .col
-                %ul.nav.justify-content-end
-                  %li.nav-item
-                    %li.nav-link
-                      = link_to t('.edit'), edit_professor_path(@professor)
-                  %li.nav-item
-                    %li.nav-link
-                      = link_to t('.delete'), professor_path(@professor),
-                          method: :delete,
-                            data: { confirm: t('.delete_data_confirm') }, class: 'delete-professor-button'
-          .card-body.my-4
-            .container-fluid
-              .table.border-bottom
-                .tbody
-                  %tr
-                    .row.border-top
-                      .col= Professor.human_attribute_name(:name)
-                      .col= @professor.name
-                  %tr
-                    .row.border-top
-                      .col= Professor.human_attribute_name(:cellphone)
-                      .col= @professor.cellphone
+  .col-xl-9.my-4
+    .container-fluid
+      .card.professor-attributes-content.shadow
+        .card-header.shadow-sm
+          .row
+            .col.h2= t('.professor_attributes_title')
+            .col
+              %ul.nav.justify-content-end
+                %li.nav-item
+                  %li.nav-link
+                    = link_to t('.edit'), edit_professor_path(@professor)
+                %li.nav-item
+                  %li.nav-link
+                    = link_to t('.delete'), professor_path(@professor),
+                        method: :delete,
+                          data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
+        .card-body.my-4
+          .container-fluid
+            .table.border.rounded.shadow-sm.bg-light
+              .tbody
+                %tr
+                  .row.p-2.m-0.border-bottom
+                    .col= Professor.human_attribute_name(:name)
+                    .col= @professor.name
+                %tr
+                  .row.p-2.m-0.border-bottom
+                    .col= Professor.human_attribute_name(:cellphone)
+                    .col= @professor.cellphone
