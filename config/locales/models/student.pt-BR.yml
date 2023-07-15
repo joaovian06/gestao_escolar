@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      student: Estudante
+    attributes:
+      student:
+        name: Nome
+        address: Endereço
+        birthday: Aniversário
+        gender: Gênero
+        disability: Deficiência
+        avatar: Foto de Perfil
+      student/gender:
+        male: Homem
+        female: Mulher

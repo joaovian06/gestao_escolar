@@ -1,0 +1,13 @@
+pt-BR:
+  shared:
+    shared_header:
+      students: Estudantes
+      new_student: Novo Estudante
+      professors: Professores
+      new_professor: Novo Professor
+      classrooms: Turmas
+      new_classroom: Nova Turma
+      enrollments: Matrículas
+      new_enrollment: Nova Matrícula
+      register: Cadastrar
+

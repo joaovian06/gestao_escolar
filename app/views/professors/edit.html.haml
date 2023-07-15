@@ -1,0 +1,23 @@
+= stylesheet_link_tag 'views/professors/edit'
+
+.row
+  .col-xl-12.mt-5
+    .container-fluid
+      .card.shadow
+        .card-header.shadow-sm
+          .row
+            .col.h2= t('.edit_professor_attributes_title')
+            .col
+              %ul.nav.justify-content-end
+                %li.nav-item
+                  %li.nav-link
+                    = link_to t('.back'), professor_path(@professor), class: 'show-professor-link'
+                %li.nav-item
+                  %li.nav-link
+                    = link_to t('.delete'), professor_path(@professor),
+                  method: :delete,
+                    data: { confirm: t('.delete_data_confirm') }, class: 'text-danger'
+        .card-body.my-4
+          .container-fluid
+            = render 'form'
+

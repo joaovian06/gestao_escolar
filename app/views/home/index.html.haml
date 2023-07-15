@@ -1,0 +1,23 @@
+.container-fluid.bg-light
+  .container-fluid.border.rounded.shadow.my-4.py-4.bg-white
+    .row
+      .col-xl-3
+        .card.shadow-sm.bg-light
+          .card-body
+            %h2.card-title= link_to t('.students'), students_path
+            .card-text= t('.students_info')
+      .col-xl-3
+        .card.shadow-sm.bg-light
+          .card-body
+            %h2.card-title= link_to t('.professors'), professors_path
+            .card-text= t('.professors_info')
+      .col-xl-3
+        .card.shadow-sm.bg-light
+          .card-body
+            %h2.card-title= link_to t('.classrooms'), classrooms_path
+            .card-text= t('.classrooms_info')
+      .col-xl-3
+        .card.shadow-sm.bg-light
+          .card-body
+            %h2.card-title= link_to t('.enrollments'), enrollments_path
+            .card-text= t('.enrollments_info')
